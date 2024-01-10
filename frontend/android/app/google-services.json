@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "919376714729",
+    "project_id": "nutribyte-d3680",
+    "storage_bucket": "nutribyte-d3680.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:919376714729:android:2a5eb7c0af52fea5a30978",
+        "android_client_info": {
+          "package_name": "org.nullbyte.nutri_byte"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq5BiVDpmVd7kwBQjDSuNZmPqWFKWXs0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
