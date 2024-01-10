@@ -9,6 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.6
   material_color_utilities: ^0.5.0
+  syncfusion_flutter_charts: 24.1.45
   flutter:
     sdk: flutter
 
@@ -18,7 +19,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-  uses-material-design: true
   fonts:
     - family: Signika
       fonts:
@@ -31,3 +31,4 @@ flutter:
         - asset: fonts/Signika/static/Signika-Regular.ttf
         - asset: fonts/Signika/static/Signika-SemiBold.ttf
           weight: 600
+  uses-material-design: true
