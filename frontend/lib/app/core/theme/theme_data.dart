@@ -4,6 +4,7 @@ import 'package:nutri_byte/app/core/theme/colors.dart';
 class NutriByteTheme {
   static ThemeData lightTheme = ThemeData(
       useMaterial3: true,
+      fontFamily: "Signika",
       colorScheme: ColorScheme.fromSeed(
           seedColor: NutriByteColor.seedColor,
           primary: NutriByteColor.light.primary,
@@ -17,6 +18,7 @@ class NutriByteTheme {
 
   static ThemeData darkTheme = ThemeData(
       useMaterial3: true,
+      fontFamily: "Signika",
       colorScheme: ColorScheme.fromSeed(
           seedColor: NutriByteColor.seedColor,
           primary: NutriByteColor.dark.primary,
