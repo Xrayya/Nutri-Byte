@@ -1,9 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/core/constant.dart';
+import 'package:nutri_byte/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
-  //TODO: Implement AuthController
-
-  final count = 0.obs;
+  static get i => Get.find<AuthController>();
+  late Rx<User?> firebaseUser;
   @override
   void onInit() {
     super.onInit();
@@ -12,6 +15,8 @@ class AuthController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+    firebaseUser = Rx<User?>(auth.currentUser);
+    firebaseUser.bindStream(auth.authStateChanges());
   }
 
   @override
@@ -19,5 +24,7 @@ class AuthController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  _setScreen(User? user) {
+    if (user == null) {}
+  }
 }
