@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/auth/REGISTER/bindings/register_binding.dart';
+import '../modules/auth/REGISTER/views/register_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
@@ -36,6 +38,11 @@ class AppPages {
           name: _Paths.SIGNIN,
           page: () => const SigninView(),
           binding: SigninBinding(),
+        ),
+        GetPage(
+          name: _Paths.REGISTER,
+          page: () => const RegisterView(),
+          binding: RegisterBinding(),
         ),
       ],
     ),

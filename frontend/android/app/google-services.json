@@ -12,7 +12,20 @@
           "package_name": "org.nullbyte.nutri_byte"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "919376714729-33ii00mv90c808ql7edtvns9qq4dprlm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.nullbyte.nutri_byte",
+            "certificate_hash": "44be249301d0063aa7cfe851fffb96f803dfeed4"
+          }
+        },
+        {
+          "client_id": "919376714729-51dbbdrfimsmfgb6sfgcm4c23sf6gkth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDq5BiVDpmVd7kwBQjDSuNZmPqWFKWXs0c"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "919376714729-51dbbdrfimsmfgb6sfgcm4c23sf6gkth.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "919376714729-fj2ilkges0ucdpesnv32o2mq75blgg1t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.nullbyte.nutriByte"
+              }
+            }
+          ]
         }
       }
     }

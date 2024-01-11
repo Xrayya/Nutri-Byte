@@ -17,6 +17,7 @@ class AuthController extends GetxController {
     super.onReady();
     firebaseUser = Rx<User?>(auth.currentUser);
     firebaseUser.bindStream(auth.authStateChanges());
+    ever(firebaseUser, _setScreen);
   }
 
   @override
@@ -24,7 +25,16 @@ class AuthController extends GetxController {
     super.onClose();
   }
 
-  _setScreen(User? user) {
-    if (user == null) {}
+  _setScreen(User? user) async {
+    if (user == null) {
+      Get.offAllNamed(Routes.LOGIN);
+    } else {
+      final userDb = await firestore.collection('users').doc(user.uid).get();
+      if (userDb.exists) {
+        Get.offAllNamed(Routes.HOME);
+      } else {
+        Get.offAllNamed(Routes.REGISTER);
+      }
+    }
   }
 }
