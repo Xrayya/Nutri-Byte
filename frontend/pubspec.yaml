@@ -17,6 +17,10 @@ dependencies:
   flutter_svg: ^2.0.9
   form_validator: ^2.1.1
   gradient_progress_bar: ^1.0.4
+  permission_handler: ^11.1.0
+  camera: ^0.10.5+8
+  flutter_tflite: ^1.0.1
+  image: ^3.3.0
   flutter:
     sdk: flutter
 
@@ -29,6 +33,7 @@ flutter:
   assets:
     - assets/images/
     - images/placeholder.png
+    - assets/model/
   fonts:
     - family: Signika
       fonts:
