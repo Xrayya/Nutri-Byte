@@ -9,10 +9,10 @@ import '../modules/auth/signin/bindings/signin_binding.dart';
 import '../modules/auth/signin/views/signin_view.dart';
 import '../modules/auth/views/auth_view.dart';
 import '../modules/home/bindings/home_binding.dart';
-import '../modules/home/dashboard/bindings/dashboard_binding.dart';
-import '../modules/home/dashboard/views/dashboard_view.dart';
 import '../modules/home/detail_nutrition/bindings/detail_nutrition_binding.dart';
 import '../modules/home/detail_nutrition/views/detail_nutrition_view.dart';
+import '../modules/home/scanfood/bindings/scanfood_binding.dart';
+import '../modules/home/scanfood/views/scanfood_view.dart';
 import '../modules/home/views/home_view.dart';
 
 part 'app_routes.dart';
@@ -29,14 +29,14 @@ class AppPages {
       binding: HomeBinding(),
       children: [
         GetPage(
-          name: _Paths.DASHBOARD,
-          page: () => const DashboardView(),
-          binding: DashboardBinding(),
-        ),
-        GetPage(
           name: _Paths.DETAIL_NUTRITION,
           page: () => const DetailNutritionView(),
           binding: DetailNutritionBinding(),
+        ),
+        GetPage(
+          name: _Paths.SCANFOOD,
+          page: () => const ScanfoodView(),
+          binding: ScanfoodBinding(),
         ),
       ],
     ),
