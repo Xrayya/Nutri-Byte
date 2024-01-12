@@ -60,6 +60,9 @@ class ScanfoodController extends GetxController {
       if (obj['confidence'] * 100 > 60) {
         detectedObject(obj['label'].toString());
         confidence(obj['confidence']);
+      } else {
+        detectedObject('');
+        confidence(0);
       }
     }
   }

@@ -20,7 +20,7 @@ class ScanfoodView extends GetView<ScanfoodController> {
                   Expanded(
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 20, horizontal: 48),
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 48),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: const BorderRadius.only(
@@ -28,20 +28,38 @@ class ScanfoodView extends GetView<ScanfoodController> {
                           topLeft: Radius.circular(32),
                         ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Column(
                         children: [
-                          SizedBox(
-                            width: 24,
+                          Obx(
+                            () => Text(controller.detectedObject.value),
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.camera_alt),
-                            color: NutriByteColor.light.primary.tone(70),
+                          Obx(
+                            () => Text(
+                              controller.confidence.value.toString(),
+                            ),
                           ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.cameraswitch_outlined, ))
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 24,
+                              ),
+                              FloatingActionButton(
+                                onPressed: () {},
+                                backgroundColor:
+                                    Get.theme.colorScheme.primary.tone(60),
+                                child: Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.cameraswitch_outlined,
+                                  ))
+                            ],
+                          ),
                         ],
                       ),
                     ),
