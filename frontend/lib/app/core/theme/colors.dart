@@ -5,6 +5,8 @@ class NutriByteColor {
 
   static final _LightThemeColors light = _LightThemeColors();
   static final _DarkThemeColors dark = _DarkThemeColors();
+  static final Color primary70 = const Color(0xFF6CBF48);
+  static final darkText = const Color(0xFF8D8E99);
 }
 
 class _LightThemeColors {
@@ -12,8 +14,13 @@ class _LightThemeColors {
   final Color secondary = const Color(0xFF406836);
   final Color tertiary = const Color(0xFF7E570F);
   final Color onTertiary = const Color(0xFFFFFFFF);
+  final Color primaryContainer = const Color(0xFFC4EFAC);
   final Color tertiaryContainer = const Color(0xFFFFDDB0);
+  final Color surfaceTint = const Color(0xFF446832);
   final Color onTertiaryContainer = const Color(0xFF291800);
+  final Color background = const Color(0xFFF8FAF0);
+  final Color outline = const Color(0xFF73796D);
+  final Color onPrimaryContainer = const Color(0xFF062100);
 }
 
 class _DarkThemeColors {
