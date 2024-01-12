@@ -26,11 +26,14 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
       body: Column(
         children: [
           Card(
+            elevation: 5,
             margin: EdgeInsets.all(0),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30))),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
             color: Theme.of(context).colorScheme.primaryContainer,
             child: Column(
               children: [
@@ -50,10 +53,11 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                 SfCircularChart(
                   // TODO: custom legend
                   legend: Legend(
-                      isVisible: true,
-                      position: LegendPosition.bottom,
-                      orientation: LegendItemOrientation.vertical,
-                      height: '100%'),
+                    isVisible: true,
+                    position: LegendPosition.bottom,
+                    orientation: LegendItemOrientation.vertical,
+                    height: '100%',
+                  ),
                   borderWidth: 1,
                   series: [
                     RadialBarSeries<ChartData, String>(
@@ -81,9 +85,9 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
             ),
           ),
           Padding(
-              padding: const EdgeInsets.all(26.0),
-              // InformationList(padding: EdgeInsets.fromLTRB(38, 52, 38, 52)),
+              padding: const EdgeInsets.all(27.0),
               child: Card(
+                elevation: 5,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(38, 52, 38, 52),
                   child: Table(
