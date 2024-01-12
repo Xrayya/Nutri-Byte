@@ -99,11 +99,7 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
-                          //login
-                        }
-                      },
+                      onPressed: () => controller.login(),
                       child: Text(
                         'Log In',
                         style: Get.textTheme.titleLarge!

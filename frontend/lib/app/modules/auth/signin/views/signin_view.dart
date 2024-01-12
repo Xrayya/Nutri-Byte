@@ -114,6 +114,7 @@ class SigninView extends GetView<SigninController> {
                   ),
                   Obx(
                     () => CheckboxListTile(
+                      controlAffinity: ListTileControlAffinity.leading,
                       value: controller.isAgreed.value,
                       onChanged: (value) => controller.isAgreed.toggle(),
                       title: RichText(
@@ -149,11 +150,7 @@ class SigninView extends GetView<SigninController> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
-                        if (controller.formKey.currentState!.validate()) {
-                          //login
-                        }
-                      },
+                      onPressed: () => controller.register(),
                       child: Text(
                         'Sign Up',
                         style: Get.textTheme.titleLarge!
