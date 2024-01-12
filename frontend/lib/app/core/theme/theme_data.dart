@@ -132,7 +132,15 @@ class NutriByteTheme {
         ),
         foregroundColor:
             MaterialStateProperty.all(NutriByteColor.light.primary),
-        overlayColor: MaterialStateProperty.all(NutriByteColor.light.primary),
+        overlayColor: MaterialStateProperty.all(NutriByteColor.seedColor),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(NutriByteColor.primary70),
+        padding: MaterialStateProperty.all(
+          const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
       ),
     ),
   );

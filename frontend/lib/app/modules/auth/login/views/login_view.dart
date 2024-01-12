@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:form_validator/form_validator.dart';
 
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/theme/colors.dart';
@@ -12,6 +13,7 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Get.theme.colorScheme.primaryContainer,
+      resizeToAvoidBottomInset: false,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -20,24 +22,24 @@ class LoginView extends GetView<LoginController> {
           ),
           SvgPicture.asset(
             'assets/images/nutribyte.svg',
-            width: context.width * 0.3,
-            height: context.width * 0.3,
+            width: context.width * 0.45,
+            height: context.width * 0.45,
           ),
-          SizedBox(
-            height: 55,
-          ),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 48),
-              decoration: BoxDecoration(
-                color: Get.theme.colorScheme.background,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                ),
+          Spacer(),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 48),
+            decoration: BoxDecoration(
+              color: Get.theme.colorScheme.background,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
               ),
+            ),
+            child: Form(
+              key: controller.formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Log in',
@@ -48,20 +50,36 @@ class LoginView extends GetView<LoginController> {
                     height: 18,
                   ),
                   TextFormField(
+                    controller: controller.emailEditingController,
                     keyboardType: TextInputType.emailAddress,
+                    validator: ValidationBuilder()
+                        .email('Please input a valid email')
+                        .build(),
                     decoration:
                         InputDecoration(hintText: 'Email', labelText: 'Email'),
                   ),
                   SizedBox(
                     height: 18,
                   ),
-                  TextFormField(
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      labelText: 'Password',
-                      suffixIcon: Icon(Icons.visibility),
+                  Obx(
+                    () => TextFormField(
+                      controller: controller.passwordEditingController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: ValidationBuilder()
+                          .minLength(
+                              8, 'Password length must be greatest than 8 char')
+                          .build(),
+                      obscureText: controller.obscureText.value,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        labelText: 'Password',
+                        suffixIcon: IconButton(
+                          onPressed: () => controller.obscureText.toggle(),
+                          icon: Icon(controller.obscureText.value
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                        ),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -80,11 +98,11 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: NutriByteColor.primary70,
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                      ),
+                      onPressed: () {
+                        if (controller.formKey.currentState!.validate()) {
+                          //login
+                        }
+                      },
                       child: Text(
                         'Log In',
                         style: Get.textTheme.titleLarge!
@@ -92,20 +110,27 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Row(
                     children: [
                       Expanded(
-                          child: Divider(
-                        color: NutriByteColor.darkText,
-                        height: 1,
-                      )),
+                        child: Divider(
+                          color: NutriByteColor.darkText,
+                          height: 1,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
                       Text(
                         'or sign in using',
                         style: TextStyle(
                             color: NutriByteColor.darkText, fontSize: 14),
+                      ),
+                      SizedBox(
+                        width: 4,
                       ),
                       Expanded(
                           child: Divider(
@@ -117,19 +142,22 @@ class LoginView extends GetView<LoginController> {
                   SizedBox(
                     height: 18,
                   ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: SvgPicture.asset(
-                      'assets/images/circle_google.svg',
-                      width: 48,
-                      height: 48,
+                  Center(
+                    child: MaterialButton(
+                      onPressed: () {},
+                      child: SvgPicture.asset(
+                        'assets/images/circle_google.svg',
+                        width: 48,
+                        height: 48,
+                      ),
+                      shape: CircleBorder(side: BorderSide.none),
                     ),
-                    shape: CircleBorder(side: BorderSide.none),
                   ),
                   SizedBox(
                     height: 18,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "Don't have an account?",

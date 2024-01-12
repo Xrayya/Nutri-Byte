@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final obscureText = true.obs;
 
   final count = 0.obs;
   @override
