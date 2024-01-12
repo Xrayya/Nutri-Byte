@@ -132,7 +132,8 @@ class NutriByteTheme {
         ),
         foregroundColor:
             MaterialStateProperty.all(NutriByteColor.light.primary),
-        overlayColor: MaterialStateProperty.all(NutriByteColor.seedColor),
+        overlayColor: MaterialStateProperty.all(
+            NutriByteColor.seedColor.withOpacity(0.2)),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

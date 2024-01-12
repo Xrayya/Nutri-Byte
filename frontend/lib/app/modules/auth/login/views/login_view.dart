@@ -4,6 +4,7 @@ import 'package:form_validator/form_validator.dart';
 
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/theme/colors.dart';
+import 'package:nutri_byte/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -17,7 +18,7 @@ class LoginView extends GetView<LoginController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           SvgPicture.asset(
@@ -25,13 +26,13 @@ class LoginView extends GetView<LoginController> {
             width: context.width * 0.45,
             height: context.width * 0.45,
           ),
-          Spacer(),
+          const Spacer(),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 48),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 48),
             decoration: BoxDecoration(
               color: Get.theme.colorScheme.background,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
@@ -46,7 +47,7 @@ class LoginView extends GetView<LoginController> {
                     style: Get.textTheme.displaySmall!
                         .copyWith(color: Get.theme.colorScheme.surfaceTint),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   TextFormField(
@@ -55,10 +56,10 @@ class LoginView extends GetView<LoginController> {
                     validator: ValidationBuilder()
                         .email('Please input a valid email')
                         .build(),
-                    decoration:
-                        InputDecoration(hintText: 'Email', labelText: 'Email'),
+                    decoration: const InputDecoration(
+                        hintText: 'Email', labelText: 'Email'),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Obx(
@@ -82,7 +83,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   TextButton(
@@ -92,7 +93,7 @@ class LoginView extends GetView<LoginController> {
                       style: Get.textTheme.titleMedium,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   SizedBox(
@@ -121,7 +122,7 @@ class LoginView extends GetView<LoginController> {
                           height: 1,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Text(
@@ -129,7 +130,7 @@ class LoginView extends GetView<LoginController> {
                         style: TextStyle(
                             color: NutriByteColor.darkText, fontSize: 14),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 4,
                       ),
                       Expanded(
@@ -139,21 +140,21 @@ class LoginView extends GetView<LoginController> {
                       )),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Center(
                     child: MaterialButton(
                       onPressed: () {},
+                      shape: const CircleBorder(side: BorderSide.none),
                       child: SvgPicture.asset(
                         'assets/images/circle_google.svg',
                         width: 48,
                         height: 48,
                       ),
-                      shape: CircleBorder(side: BorderSide.none),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                   Row(
@@ -165,7 +166,7 @@ class LoginView extends GetView<LoginController> {
                             .copyWith(color: Get.theme.colorScheme.surfaceTint),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () => Get.offNamed(Routes.SIGNIN),
                         child: Text(
                           'Sign Up',
                           style: Get.textTheme.bodyMedium!

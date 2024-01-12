@@ -1,9 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SigninController extends GetxController {
-  //TODO: Implement SigninController
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final passwordConfirmEditingController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final passwordObscureText = true.obs;
+  final passwordConfirmObscureText = true.obs;
+  final isAgreed = false.obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +24,4 @@ class SigninController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
