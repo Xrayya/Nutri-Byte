@@ -20,6 +20,7 @@ class _LightThemeColors {
   final Color onTertiaryContainer = const Color(0xFF291800);
   final Color background = const Color(0xFFF8FAF0);
   final Color outline = const Color(0xFF73796D);
+  final Color onPrimaryContainer = const Color(0xFF062100);
 }
 
 class _DarkThemeColors {

@@ -15,6 +15,7 @@ dependencies:
   material_color_utilities: ^0.5.0
   flutter_svg: ^2.0.9
   form_validator: ^2.1.1
+  gradient_progress_bar: ^1.0.4
   flutter:
     sdk: flutter
 

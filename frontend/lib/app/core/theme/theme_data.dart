@@ -136,6 +136,10 @@ class NutriByteTheme {
             NutriByteColor.seedColor.withOpacity(0.2)),
       ),
     ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.white,
+      elevation: 0,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(NutriByteColor.primary70),
@@ -143,6 +147,11 @@ class NutriByteTheme {
           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         ),
       ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: NutriByteColor.light.primaryContainer,
+      foregroundColor: NutriByteColor.light.onPrimaryContainer,
+      shape: const CircleBorder(),
     ),
   );
 
