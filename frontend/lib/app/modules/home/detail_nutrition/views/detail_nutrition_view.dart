@@ -12,6 +12,12 @@ var pieData = <ChartData>[
   ChartData("Fat", 20, 40)
 ];
 
+var data = [
+  ["Total Calories", ":", "1844.17", "Kcal"],
+  ["Net Calories", ":", "1844.17", "Kcal"],
+  ["Goal", ":", "1637", "Kcal"]
+];
+
 class DetailNutritionView extends GetView<DetailNutritionController> {
   const DetailNutritionView({Key? key}) : super(key: key);
   @override
@@ -35,7 +41,6 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                     child: FloatingActionButton(
                       child: Icon(Icons.arrow_back),
                       onPressed: () {},
-                      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(9999))),
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(Radius.circular(9999))),
@@ -67,7 +72,7 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                       height: '90%',
                       width: '90%',
                       widget: CircleAvatar(
-                        backgroundImage: AssetImage('images/person.jpg'),
+                        backgroundImage: AssetImage('images/placeholder.png'),
                       ),
                     ),
                   ],
@@ -75,6 +80,31 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
               ],
             ),
           ),
+          Padding(
+              padding: const EdgeInsets.all(26.0),
+              // InformationList(padding: EdgeInsets.fromLTRB(38, 52, 38, 52)),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(38, 52, 38, 52),
+                  child: Table(
+                    columnWidths: {
+                      1: FixedColumnWidth(20),
+                      data[0].length - 1: IntrinsicColumnWidth()
+                    },
+                    border: TableBorder.all(style: BorderStyle.none),
+                    children: data
+                        .map((row) => TableRow(
+                            children: row
+                                .map((cell) => TableCell(
+                                        child: Text(
+                                      cell,
+                                      overflow: TextOverflow.ellipsis,
+                                    )))
+                                .toList()))
+                        .toList(),
+                  ),
+                ),
+              ))
         ],
       ),
     );

@@ -19,6 +19,8 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  assets:
+    - images/placeholder.png
   fonts:
     - family: Signika
       fonts:
