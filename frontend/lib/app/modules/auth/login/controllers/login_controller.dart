@@ -43,4 +43,18 @@ class LoginController extends GetxController {
       }
     }
   }
+
+  void loginWithGoogle() async {
+    try {
+      await authRepo.loginWithGoogleSSO();
+    } on FirebaseAuthException catch (error) {
+      Get.snackbar(
+        'Error',
+        error.message.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
+    }
+  }
 }

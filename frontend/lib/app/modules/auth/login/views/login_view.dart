@@ -141,7 +141,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   Center(
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () => controller.loginWithGoogle(),
                       shape: const CircleBorder(side: BorderSide.none),
                       child: SvgPicture.asset(
                         'assets/images/circle_google.svg',

@@ -11,6 +11,10 @@ abstract class Routes {
   static const SIGNIN = _Paths.AUTH + _Paths.SIGNIN;
   static const REGISTER = _Paths.AUTH + _Paths.REGISTER;
   static const SCANFOOD = _Paths.HOME + _Paths.SCANFOOD;
+  static const NUTRITIONDETAIL =
+      _Paths.HOME + _Paths.SCANFOOD + _Paths.NUTRITIONDETAIL;
+  static const SCANNUTRITION =
+      _Paths.HOME + _Paths.SCANFOOD + _Paths.SCANNUTRITION;
 }
 
 abstract class _Paths {
@@ -23,4 +27,6 @@ abstract class _Paths {
   static const SIGNIN = '/signin';
   static const REGISTER = '/register';
   static const SCANFOOD = '/scanfood';
+  static const NUTRITIONDETAIL = '/nutritiondetail';
+  static const SCANNUTRITION = '/scannutrition';
 }

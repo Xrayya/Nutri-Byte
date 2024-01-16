@@ -12,6 +12,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/detail_nutrition/bindings/detail_nutrition_binding.dart';
 import '../modules/home/detail_nutrition/views/detail_nutrition_view.dart';
 import '../modules/home/scanfood/bindings/scanfood_binding.dart';
+import '../modules/home/scanfood/scannutrition/bindings/scannutrition_binding.dart';
+import '../modules/home/scanfood/scannutrition/views/scannutrition_view.dart';
 import '../modules/home/scanfood/views/scanfood_view.dart';
 import '../modules/home/views/home_view.dart';
 
@@ -37,6 +39,13 @@ class AppPages {
           name: _Paths.SCANFOOD,
           page: () => const ScanfoodView(),
           binding: ScanfoodBinding(),
+          children: [
+            GetPage(
+              name: _Paths.SCANNUTRITION,
+              page: () => const ScannutritionView(),
+              binding: ScannutritionBinding(),
+            ),
+          ],
         ),
       ],
     ),
