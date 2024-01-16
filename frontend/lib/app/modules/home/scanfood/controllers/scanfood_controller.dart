@@ -39,7 +39,7 @@ class ScanfoodController extends GetxController {
 
   void changeCamera() async {
     if (cameraController.value == null) return;
-    await cameraController.value!.stopImageStream();
+    // await cameraController.value!.stopImageStream();
     print('camera length ${cameras.length}');
     int cameraIndex = cameras.indexOf(cameraController.value!.description);
     cameraIndex = cameraIndex < cameras.length - 1 ? cameraIndex + 1 : 0;
