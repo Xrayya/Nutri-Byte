@@ -10,6 +10,7 @@ IntrinsicHeight FABWithLabel({
     child: Column(
       children: [
         FloatingActionButton.small(
+          heroTag: UniqueKey().toString(),
           onPressed: onPress,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),

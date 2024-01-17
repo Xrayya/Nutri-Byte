@@ -43,6 +43,7 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: FloatingActionButton(
+                        heroTag: 'nutritiondetail_back',
                         child: Icon(Icons.arrow_back),
                         onPressed: () => Get.back(),
                         shape: RoundedRectangleBorder(

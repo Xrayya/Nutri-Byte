@@ -41,7 +41,9 @@ class RegisterView extends GetView<RegisterController> {
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: FloatingActionButton(
-                  onPressed: () => back(), child: const Icon(Icons.arrow_back)),
+                  heroTag: 'register_back',
+                  onPressed: () => back(),
+                  child: const Icon(Icons.arrow_back)),
             ),
             Expanded(
               child: Padding(

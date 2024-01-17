@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        heroTag: "scan",
         onPressed: () => Get.toNamed(Routes.SCANFOOD),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(9999))),
