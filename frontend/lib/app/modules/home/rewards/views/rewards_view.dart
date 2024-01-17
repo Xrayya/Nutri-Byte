@@ -11,7 +11,8 @@ class RewardsView extends GetView<RewardsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
+      body: SingleChildScrollView(
+          child: Stack(
         children: [
           Container(
               width: double.infinity,
@@ -43,10 +44,12 @@ class RewardsView extends GetView<RewardsController> {
                         borderRadius: BorderRadius.circular(16),
                         color: Get.theme.primaryColor.tone(80),
                       ),
-                      child: Text(
-                        '330 NutriCoins',
-                        style: Get.textTheme.titleLarge!
-                            .copyWith(color: Colors.white),
+                      child: Obx(
+                        () => Text(
+                          '${controller.currentUser.value?.points} NutriCoins',
+                          style: Get.textTheme.titleLarge!
+                              .copyWith(color: Colors.white),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -63,28 +66,35 @@ class RewardsView extends GetView<RewardsController> {
                     const SizedBox(
                       height: 4,
                     ),
-                    rewardCard(
-                        price: 5000,
-                        title: '1 Month Premium',
-                        onPress: () => Get.snackbar(
-                            'Claimed', 'You have claimed this reward')),
-                    rewardCard(
-                        price: 5000,
-                        title: '1 Month Premium',
-                        onPress: () => Get.snackbar(
-                            'Claimed', 'You have claimed this reward')),
-                    rewardCard(
-                        price: 5000,
-                        title: '1 Month Premium',
-                        onPress: () => Get.snackbar(
-                            'Claimed', 'You have claimed this reward')),
+                    Obx(
+                      () => ListView.builder(
+                        itemBuilder: (context, index) {
+                          final reward = controller.rewards[index];
+                          final isClaimed = controller.userRewards
+                              .any((element) => element.name == reward.name);
+                          return rewardCard(
+                            title: reward.name,
+                            price: reward.price,
+                            onPress: isClaimed
+                                ? null
+                                : () {
+                                    controller.claimReward(reward);
+                                  },
+                          );
+                        },
+                        itemCount: controller.rewards.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                      ),
+                    ),
                   ],
                 ),
               )
             ],
           )
         ],
-      ),
+      )),
     );
   }
 

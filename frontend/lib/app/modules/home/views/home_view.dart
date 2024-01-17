@@ -223,7 +223,9 @@ class HomeView extends GetView<HomeController> {
                             children: [
                               Obx(
                                 () => Text(
-                                  "${controller.nutriCoin.value} NutriCoins",
+                                  controller.currentUser.value?.points
+                                          .toString() ??
+                                      '0' + " NutriCoins",
                                   style: Get.textTheme.titleLarge!.copyWith(
                                     color: Get.theme.colorScheme.onPrimary,
                                   ),
