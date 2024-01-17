@@ -15,6 +15,8 @@ abstract class Routes {
       _Paths.HOME + _Paths.SCANFOOD + _Paths.NUTRITIONDETAIL;
   static const SCANNUTRITION =
       _Paths.HOME + _Paths.SCANFOOD + _Paths.SCANNUTRITION;
+  static const QUESTS = _Paths.HOME + _Paths.QUESTS;
+  static const REWARDS = _Paths.HOME + _Paths.REWARDS;
 }
 
 abstract class _Paths {
@@ -29,4 +31,6 @@ abstract class _Paths {
   static const SCANFOOD = '/scanfood';
   static const NUTRITIONDETAIL = '/nutritiondetail';
   static const SCANNUTRITION = '/scannutrition';
+  static const QUESTS = '/quests';
+  static const REWARDS = '/rewards';
 }

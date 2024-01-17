@@ -2,10 +2,12 @@ import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/constant.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
+import 'package:nutri_byte/app/data/provider/auth_provider.dart';
 import 'package:nutri_byte/app/data/provider/user_provider.dart';
 
 class UserRepository {
   final userProvider = Get.find<UserProvider>();
+  final authProvider = Get.find<AuthProvider>();
   Future<NutribyteUser?> registerToDB({
     required String name,
     required String gender,
@@ -52,5 +54,9 @@ class UserRepository {
   Future<DailyLog?> getDailyLog() async {
     final log = await userProvider.getDailyLog();
     return log;
+  }
+
+  Future<NutribyteUser?> getUser() {
+    return userProvider.getUser(auth.currentUser!.uid);
   }
 }
