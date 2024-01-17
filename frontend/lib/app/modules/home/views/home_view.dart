@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/core/theme/colors.dart';
+import 'package:nutri_byte/app/core/utils/color_utils.dart';
 import 'package:nutri_byte/app/data/models.dart';
 import 'package:nutri_byte/app/routes/app_pages.dart';
+import 'package:nutri_byte/app/widgets/fab_with_button.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/home_controller.dart';
@@ -11,13 +13,11 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final name = 'Alvin';
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.toNamed(Routes.SCANFOOD),
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(9999)),
-        ),
+            borderRadius: BorderRadius.all(Radius.circular(9999))),
         child: const Icon(Icons.camera_alt),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -42,16 +42,36 @@ class HomeView extends GetView<HomeController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hello $name"),
-            const Text("Heath start with you"),
-            Container(
-              margin: const EdgeInsets.only(top: 27.0),
-              child: Expanded(
+            Padding(
+              padding: const EdgeInsets.only(left: 24, top: 52),
+              child: Obx(
+                () => RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: "Hello ${controller.currentUser.value?.name}\n",
+                      style: const TextStyle(
+                        color: Color(0xFF91C788),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "Health starts with you",
+                      style: Get.textTheme.titleMedium!
+                          .copyWith(color: const Color(0xFF7B7B7B)),
+                    ),
+                  ]),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(top: 27.0),
                 child: Stack(
                   children: [
                     Card(
                       color: Theme.of(context).colorScheme.primaryContainer,
-                      margin: const EdgeInsets.all(0),
+                      margin: const EdgeInsets.only(top: 40),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
@@ -59,68 +79,123 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(24, 63, 24, 0),
+                        padding: const EdgeInsets.fromLTRB(24, 63, 24, 35),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Card(
-                              elevation: 5,
-                              child: SfCircularChart(
-                                title: const ChartTitle(
-                                  text: "Nutrition Log",
-                                  alignment: ChartAlignment.near,
-                                ),
-                                // TODO: custom legend
-                                legend: const Legend(isVisible: true),
-                                borderWidth: 1,
-                                series: [
-                                  RadialBarSeries<ChartData, String>(
-                                    dataSource: controller.pieData,
-                                    xValueMapper: (ChartData data, _) =>
-                                        data.nutritionName,
-                                    yValueMapper: (ChartData data, _) =>
-                                        data.percentage,
-                                    dataLabelMapper: (ChartData data, _) =>
-                                        data.text,
-                                    cornerStyle: CornerStyle.bothCurve,
-                                    gap: '10%',
-                                    radius: '100%',
-                                    maximumValue: 100,
-                                  ),
-                                ],
-                                annotations: const [
-                                  CircularChartAnnotation(
-                                    height: '90%',
-                                    width: '90%',
-                                    widget: CircleAvatar(
-                                      backgroundImage:
-                                          AssetImage('images/placeholder.png'),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              child: Card(
+                                elevation: 5,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(8),
+                                      alignment: AlignmentDirectional.topStart,
+                                      child: Text(
+                                        "Nutrition Log",
+                                        style: Get.textTheme.headlineSmall,
+                                        textAlign: TextAlign.start,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Flexible(
+                                      fit: FlexFit.tight,
+                                      child: SfCircularChart(
+                                        legend: const Legend(
+                                          isVisible: true,
+                                          position: LegendPosition.right,
+                                        ),
+                                        borderWidth: 1,
+                                        series: [
+                                          RadialBarSeries<ChartData, String>(
+                                            dataSource: controller.pieData,
+                                            xValueMapper: (ChartData data, _) =>
+                                                data.nutritionName,
+                                            yValueMapper: (ChartData data, _) =>
+                                                data.percentage,
+                                            dataLabelMapper:
+                                                (ChartData data, _) =>
+                                                    data.text,
+                                            cornerStyle: CornerStyle.bothCurve,
+                                            gap: '10%',
+                                            radius: '100%',
+                                            maximumValue: 100,
+                                          ),
+                                        ],
+                                        annotations: const [
+                                          CircularChartAnnotation(
+                                            height: '90%',
+                                            width: '90%',
+                                            widget: CircleAvatar(
+                                              backgroundImage: AssetImage(
+                                                  'images/placeholder.png'),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 8),
+                                      child: ElevatedButton(
+                                        onPressed: () => Get.toNamed(
+                                            Routes.DETAIL_NUTRITION),
+                                        child: Text(
+                                          "See More",
+                                          style: Get.textTheme.titleMedium!
+                                              .copyWith(color: Colors.white),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
                               height: 23,
                             ),
-                            const Column(
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Let's check your"),
-                                Text("Body Mass Index"),
+                                Text(
+                                  "Let's check your",
+                                  style: Get.textTheme.titleLarge,
+                                ),
+                                Text(
+                                  "Body Mass Index",
+                                  style: Get.textTheme.titleLarge,
+                                ),
                               ],
                             ),
                             const SizedBox(
                               height: 23,
                             ),
-                            const Card(
+                            Card(
                               elevation: 5,
                               child: Padding(
                                 padding: EdgeInsets.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("BMI"),
+                                    Text(
+                                      "BMI",
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "15",
+                                          style: Get.textTheme.bodyLarge,
+                                        ),
+                                        Text(
+                                          "50",
+                                          style: Get.textTheme.bodyLarge,
+                                        ),
+                                      ],
+                                    ),
                                     LinearProgressIndicator(
                                       value: 0.25,
                                     ),
@@ -129,6 +204,48 @@ class HomeView extends GetView<HomeController> {
                               ),
                             )
                           ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                      ),
+                      color: NutriByteColor.seedColor.tone(80),
+                      elevation: 3,
+                      child: Container(
+                        height: 80,
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: IntrinsicHeight(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Obx(
+                                () => Text(
+                                  "${controller.nutriCoin.value} NutriCoins",
+                                  style: Get.textTheme.titleLarge!.copyWith(
+                                    color: Get.theme.colorScheme.onPrimary,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  FABWithLabel(
+                                    label: "Quest",
+                                    child: const Icon(Icons.checklist),
+                                    onPress: () {
+                                      Get.toNamed(Routes.QUESTS);
+                                    },
+                                  ),
+                                  FABWithLabel(
+                                    label: "Rewards",
+                                    child: const Icon(Icons.card_giftcard),
+                                    onPress: () => Get.toNamed(Routes.REWARDS),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     )

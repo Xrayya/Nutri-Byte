@@ -11,6 +11,10 @@ import '../modules/auth/views/auth_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/detail_nutrition/bindings/detail_nutrition_binding.dart';
 import '../modules/home/detail_nutrition/views/detail_nutrition_view.dart';
+import '../modules/home/quests/bindings/quests_binding.dart';
+import '../modules/home/quests/views/quests_view.dart';
+import '../modules/home/rewards/bindings/rewards_binding.dart';
+import '../modules/home/rewards/views/rewards_view.dart';
 import '../modules/home/scanfood/bindings/scanfood_binding.dart';
 import '../modules/home/scanfood/scannutrition/bindings/scannutrition_binding.dart';
 import '../modules/home/scanfood/scannutrition/views/scannutrition_view.dart';
@@ -46,6 +50,16 @@ class AppPages {
               binding: ScannutritionBinding(),
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.QUESTS,
+          page: () => const QuestsView(),
+          binding: QuestsBinding(),
+        ),
+        GetPage(
+          name: _Paths.REWARDS,
+          page: () => const RewardsView(),
+          binding: RewardsBinding(),
         ),
       ],
     ),
