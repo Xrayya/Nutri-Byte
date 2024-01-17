@@ -7,6 +7,7 @@ import 'package:nutri_byte/app/routes/app_pages.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ScanfoodController extends GetxController {
+  static get i => Get.find<ScanfoodController>();
   final Rxn<CameraController> cameraController = Rxn<CameraController>();
   late List<CameraDescription> cameras;
 
@@ -146,5 +147,10 @@ class ScanfoodController extends GetxController {
     Get.snackbar('Error', 'No object detected',
         snackPosition: SnackPosition.BOTTOM);
     isProcessing(false);
+  }
+
+  void reinitializeCamera() async {
+    await cameraController.value!.initialize();
+    cameraController.refresh();
   }
 }

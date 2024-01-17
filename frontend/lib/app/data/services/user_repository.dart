@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/constant.dart';
+import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
 import 'package:nutri_byte/app/data/provider/user_provider.dart';
 
@@ -32,5 +33,24 @@ class UserRepository {
     await userProvider.register(targetUser);
     final registeredUser = await userProvider.getUser(currentUser.uid);
     return registeredUser;
+  }
+
+  Future<void> addNewDailyLog(DailyLog log) async {
+    final checkLog = await userProvider.getDailyLog();
+    if (checkLog == null) {
+      await userProvider.setDailyLog(log);
+    }
+  }
+
+  Future<void> updateDailyLog(DailyLog log) async {
+    final checkLog = await userProvider.getDailyLog();
+    if (checkLog != null) {
+      await userProvider.setDailyLog(log);
+    }
+  }
+
+  Future<DailyLog?> getDailyLog() async {
+    final log = await userProvider.getDailyLog();
+    return log;
   }
 }
