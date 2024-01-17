@@ -11,6 +11,8 @@ import '../modules/auth/views/auth_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/detail_nutrition/bindings/detail_nutrition_binding.dart';
 import '../modules/home/detail_nutrition/views/detail_nutrition_view.dart';
+import '../modules/home/detailprofile/bindings/detailprofile_binding.dart';
+import '../modules/home/detailprofile/views/detailprofile_view.dart';
 import '../modules/home/quests/bindings/quests_binding.dart';
 import '../modules/home/quests/views/quests_view.dart';
 import '../modules/home/rewards/bindings/rewards_binding.dart';
@@ -60,6 +62,11 @@ class AppPages {
           name: _Paths.REWARDS,
           page: () => const RewardsView(),
           binding: RewardsBinding(),
+        ),
+        GetPage(
+          name: _Paths.DETAILPROFILE,
+          page: () => const DetailprofileView(),
+          binding: DetailprofileBinding(),
         ),
       ],
     ),
