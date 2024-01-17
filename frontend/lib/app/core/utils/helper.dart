@@ -10,3 +10,10 @@ bool batchIsNotEmpty(List<String?> values) {
   }
   return true;
 }
+
+String formatDateTime(DateTime dateTime) {
+  //minimal two digit for month and day
+  String month = dateTime.month.toString().padLeft(2, '0');
+  String day = dateTime.day.toString().padLeft(2, '0');
+  return '${dateTime.year}-$month-$day';
+}

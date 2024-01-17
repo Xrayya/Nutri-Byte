@@ -14,6 +14,7 @@ void main() async {
   await injection();
   runApp(
     GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "Nutri Byte",
         initialRoute: Routes.AUTH,
         getPages: AppPages.routes,
