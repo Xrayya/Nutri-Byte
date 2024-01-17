@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-IntrinsicHeight FABWithLabel({
-  Function()? onPress,
-  required String label,
-  required Widget child,
-}) {
-  return IntrinsicHeight(
-    child: Column(
-      children: [
-        FloatingActionButton.small(
-          onPressed: onPress,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+class FABWithLabel extends StatelessWidget {
+  const FABWithLabel({
+    super.key,
+    required this.label,
+    required this.child,
+    this.onPress,
+  });
+
+  final Function()? onPress;
+  final String label;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicHeight(
+      child: Column(
+        children: [
+          FloatingActionButton.small(
+            onPressed: onPress,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: child,
           ),
-          child: child,
-        ),
-        Text(
-          label,
-          style: Get.textTheme.bodySmall!.copyWith(
-            color: Get.theme.colorScheme.onPrimary,
-          ),
-        )
-      ],
-    ),
-  );
+          Text(
+            label,
+            style: Get.textTheme.bodySmall!.copyWith(
+              color: Get.theme.colorScheme.onPrimary,
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
