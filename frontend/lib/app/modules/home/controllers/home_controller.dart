@@ -5,11 +5,7 @@ import 'package:nutri_byte/app/data/services/user_repository.dart';
 
 class HomeController extends GetxController {
   final userRepo = Get.find<UserRepository>();
-  final pieData = <ChartData>[
-    ChartData("Carbs", 98, 400),
-    ChartData("Protein", 200, 250),
-    ChartData("Fat", 20, 40)
-  ];
+  final RxList<ChartData> pieData = RxList<ChartData>();
   final Rxn<NutribyteUser?> currentUser = Rxn<NutribyteUser?>();
   final Rxn<int?> nutriCoin = Rxn<int?>();
   final Rxn<double?> bmi = Rxn<double?>();
@@ -28,6 +24,12 @@ class HomeController extends GetxController {
     await fetchUser();
     nutriCoin(0);
     bmi(0.25);
+    pieData([
+      ChartData("Carbs", 98, 400),
+      ChartData("Protein", 200, 250),
+      ChartData("Fat", 20, 40)
+    ]);
+    pieData.refresh();
   }
 
   @override
