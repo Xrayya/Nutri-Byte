@@ -54,4 +54,11 @@ class UserProvider {
         .doc(dateString)
         .set(log.toJson());
   }
+
+  Future<void> updateUserPoints(int points) async {
+    await firestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .update({'points': points});
+  }
 }

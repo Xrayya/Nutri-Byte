@@ -42,6 +42,7 @@ class ScannutritionView extends GetView<ScannutritionController> {
                               height: 25,
                             ),
                             FloatingActionButton(
+                              heroTag: 'scannutrition_back',
                               onPressed: () => controller.back(),
                               child: const Icon(Icons.arrow_back),
                             ),

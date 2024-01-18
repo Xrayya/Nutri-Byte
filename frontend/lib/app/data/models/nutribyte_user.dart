@@ -9,6 +9,7 @@ class NutribyteUser {
   final int goalType;
   final int weightLossLevel;
   final int weightGainLevel;
+  int points;
 
   NutribyteUser({
     required this.activityLevel,
@@ -21,6 +22,7 @@ class NutribyteUser {
     required this.weight,
     required this.weightGainLevel,
     required this.weightLossLevel,
+    this.points = 0,
   });
 
   factory NutribyteUser.fromJson(Map<String, dynamic> json) {
@@ -35,6 +37,7 @@ class NutribyteUser {
       goalType: json['goalType'] as int,
       weightLossLevel: json['weightLossLevel'] as int,
       weightGainLevel: json['weightGainLevel'] as int,
+      points: json['points'] as int,
     );
   }
 
@@ -50,6 +53,7 @@ class NutribyteUser {
       'goalType': goalType,
       'weightLossLevel': weightLossLevel,
       'weightGainLevel': weightGainLevel,
+      'points': points,
     };
   }
 }

@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        heroTag: "scan",
         onPressed: () => Get.toNamed(Routes.SCANFOOD),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(9999))),
@@ -222,7 +223,9 @@ class HomeView extends GetView<HomeController> {
                             children: [
                               Obx(
                                 () => Text(
-                                  "${controller.nutriCoin.value} NutriCoins",
+                                  controller.currentUser.value?.points
+                                          .toString() ??
+                                      '0' + " NutriCoins",
                                   style: Get.textTheme.titleLarge!.copyWith(
                                     color: Get.theme.colorScheme.onPrimary,
                                   ),

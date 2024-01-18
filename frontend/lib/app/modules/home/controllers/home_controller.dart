@@ -13,6 +13,8 @@ class HomeController extends GetxController {
   final Rxn<NutribyteUser?> currentUser = Rxn<NutribyteUser?>();
   final Rxn<int?> nutriCoin = Rxn<int?>();
 
+  static HomeController get i => Get.find();
+
   @override
   void onInit() {
     super.onInit();
@@ -21,12 +23,16 @@ class HomeController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    currentUser(await userRepo.getUser());
+    fetchUser();
     nutriCoin(0);
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> fetchUser() async {
+    currentUser(await userRepo.getUser());
   }
 }
