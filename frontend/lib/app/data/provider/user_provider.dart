@@ -1,7 +1,9 @@
 import 'package:nutri_byte/app/core/constant.dart';
 import 'package:nutri_byte/app/core/utils/helper.dart';
+import 'package:nutri_byte/app/core/utils/nutrition_calc.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
+import 'package:nutri_byte/app/data/models/nutritions.dart';
 
 class UserProvider {
   Future<void> register(NutribyteUser user) async {
@@ -60,5 +62,9 @@ class UserProvider {
         .collection('users')
         .doc(auth.currentUser!.uid)
         .update({'points': points});
+  }
+
+  Future<Nutritions?> getUserGoalsNutritions(String uid) async {
+    return calculateNutrition(await getUser(uid));
   }
 }
