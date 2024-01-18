@@ -1,18 +1,16 @@
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/data/models/chart_data.dart';
+import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
 
 class HomeController extends GetxController {
   final userRepo = Get.find<UserRepository>();
-  final pieData = <ChartData>[
-    ChartData("Carbs", 98, 400),
-    ChartData("Protein", 200, 250),
-    ChartData("Fat", 20, 40)
-  ];
+  final Rxn<List<ChartData>> pieData = Rxn<List<ChartData>>();
   final Rxn<NutribyteUser?> currentUser = Rxn<NutribyteUser?>();
   final Rxn<int?> nutriCoin = Rxn<int?>();
   final Rxn<double?> bmi = Rxn<double?>();
+  final Rxn<DailyLog?> todayLog = Rxn<DailyLog?>();
   final navbarIndex = 0.obs;
   final isLoading = false.obs;
   static HomeController get i => Get.find<HomeController>();
@@ -28,11 +26,25 @@ class HomeController extends GetxController {
     await fetchUser();
     nutriCoin(0);
     bmi(0.25);
+    await fetchTodayLog();
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> fetchTodayLog() async {
+    var log = await userRepo.getDailyLog();
+    todayLog(log);
+    if (log != null) {
+      pieData([
+        ChartData("Carbs", log.carbs, log.targetCarbs),
+        ChartData("Protein", log.protein, log.targetProtein),
+        ChartData("Fat", log.fats, log.targetFats)
+      ]);
+    }
+    pieData.refresh();
   }
 
   Future<void> fetchUser() async {

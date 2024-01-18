@@ -7,6 +7,7 @@ import 'package:nutri_byte/app/data/models/chart_data.dart';
 import 'package:nutri_byte/app/modules/home/controllers/home_controller.dart';
 import 'package:nutri_byte/app/routes/app_pages.dart';
 import 'package:nutri_byte/app/widgets/fab_with_button.dart';
+import 'package:nutri_byte/app/widgets/nutribyte_button.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomesectionView extends GetView<HomeController> {
@@ -75,51 +76,62 @@ class HomesectionView extends GetView<HomeController> {
                                       ),
                                     ),
                                     Flexible(
-                                      fit: FlexFit.tight,
-                                      child: SfCircularChart(
-                                        legend: const Legend(
-                                          isVisible: true,
-                                          position: LegendPosition.right,
-                                        ),
-                                        borderWidth: 1,
-                                        series: [
-                                          RadialBarSeries<ChartData, String>(
-                                            dataSource: controller.pieData,
-                                            xValueMapper: (ChartData data, _) =>
-                                                data.nutritionName,
-                                            yValueMapper: (ChartData data, _) =>
-                                                data.percentage,
-                                            dataLabelMapper:
-                                                (ChartData data, _) =>
-                                                    data.text,
-                                            cornerStyle: CornerStyle.bothCurve,
-                                            gap: '10%',
-                                            radius: '100%',
-                                            maximumValue: 100,
-                                          ),
-                                        ],
-                                        annotations: const [
-                                          CircularChartAnnotation(
-                                            height: '90%',
-                                            width: '90%',
-                                            widget: CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  'images/placeholder.png'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                        fit: FlexFit.tight,
+                                        child: Obx(
+                                          () => controller.pieData.value == null
+                                              ? const Center(
+                                                  child:
+                                                      CircularProgressIndicator(),
+                                                )
+                                              : SfCircularChart(
+                                                  legend: const Legend(
+                                                    isVisible: true,
+                                                    position:
+                                                        LegendPosition.right,
+                                                  ),
+                                                  borderWidth: 1,
+                                                  series: [
+                                                    RadialBarSeries<ChartData,
+                                                        String>(
+                                                      dataSource: controller
+                                                          .pieData.value,
+                                                      xValueMapper: (ChartData
+                                                                  data,
+                                                              _) =>
+                                                          data.nutritionName,
+                                                      yValueMapper:
+                                                          (ChartData data, _) =>
+                                                              data.percentage,
+                                                      dataLabelMapper:
+                                                          (ChartData data, _) =>
+                                                              data.text,
+                                                      cornerStyle:
+                                                          CornerStyle.bothCurve,
+                                                      gap: '10%',
+                                                      radius: '100%',
+                                                      maximumValue: 100,
+                                                    ),
+                                                  ],
+                                                  annotations: const [
+                                                    CircularChartAnnotation(
+                                                      height: '90%',
+                                                      width: '90%',
+                                                      widget: CircleAvatar(
+                                                        backgroundImage: AssetImage(
+                                                            'images/placeholder.png'),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                        )),
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
-                                      child: ElevatedButton(
+                                      child: nutriByteButton(
                                         onPressed: () => Get.toNamed(
-                                            Routes.DETAIL_NUTRITION),
-                                        child: Text(
-                                          "See More",
-                                          style: Get.textTheme.titleMedium!
-                                              .copyWith(color: Colors.white),
+                                          Routes.DETAIL_NUTRITION,
+                                          arguments: controller.todayLog.value,
                                         ),
+                                        text: "See More",
                                       ),
                                     )
                                   ],
@@ -206,22 +218,22 @@ class HomesectionView extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
-                              // Row(
-                              //   children: [
-                              //     FABWithLabel(
-                              //       label: "Quest",
-                              //       child: const Icon(Icons.checklist),
-                              //       onPress: () {
-                              //         Get.toNamed(Routes.QUESTS);
-                              //       },
-                              //     ),
-                              //     FABWithLabel(
-                              //       label: "Rewards",
-                              //       child: const Icon(Icons.card_giftcard),
-                              //       onPress: () => Get.toNamed(Routes.REWARDS),
-                              //     ),
-                              //   ],
-                              // ),
+                              Row(
+                                children: [
+                                  FABWithLabel(
+                                    label: "Quest",
+                                    child: const Icon(Icons.checklist),
+                                    onPress: () {
+                                      Get.toNamed(Routes.QUESTS);
+                                    },
+                                  ),
+                                  FABWithLabel(
+                                    label: "Rewards",
+                                    child: const Icon(Icons.card_giftcard),
+                                    onPress: () => Get.toNamed(Routes.REWARDS),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
