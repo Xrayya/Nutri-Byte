@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/constant.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
+import 'package:nutri_byte/app/data/models/nutritions.dart';
 import 'package:nutri_byte/app/data/provider/auth_provider.dart';
 import 'package:nutri_byte/app/data/provider/user_provider.dart';
 
@@ -58,5 +59,9 @@ class UserRepository {
 
   Future<NutribyteUser?> getUser() {
     return userProvider.getUser(auth.currentUser!.uid);
+  }
+
+  Future<Nutritions?> getUserGoalsNutritions() {
+    return userProvider.getUserGoalsNutritions(auth.currentUser!.uid);
   }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/food.dart';
+import 'package:nutri_byte/app/data/models/nutritions.dart';
 import 'package:nutri_byte/app/data/services/food_repository.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
 import 'package:nutri_byte/app/modules/home/scanfood/controllers/scanfood_controller.dart';
@@ -13,6 +14,7 @@ class ScannutritionController extends GetxController {
   final isLoading = false.obs;
   final _userRepo = Get.find<UserRepository>();
   final scanFoodController = Get.find<ScanfoodController>();
+  final Rxn<Nutritions> goalsNutritions = Rxn<Nutritions>();
   final count = 0.obs;
   @override
   void onInit() {
@@ -23,6 +25,7 @@ class ScannutritionController extends GetxController {
   void onReady() {
     super.onReady();
     fetchFood();
+    fetchGoalNutritions();
   }
 
   @override
@@ -59,10 +62,10 @@ class ScannutritionController extends GetxController {
         if (food.value != null) {
           final newLog = DailyLog(
               // TODO: add functionality to calculate target calories, fats, carbs, and protein from users
-              targetCalories: 2000,
-              targetCarbs: 200,
-              targetFats: 200,
-              targetProtein: 200,
+              targetCalories: goalsNutritions.value!.calories,
+              targetCarbs: goalsNutritions.value!.carbsGr,
+              targetFats: goalsNutritions.value!.fatGr,
+              targetProtein: goalsNutritions.value!.proteinGr,
               calories: food.value!.calories,
               carbs: food.value!.carbs,
               fats: food.value!.fats,
@@ -79,6 +82,10 @@ class ScannutritionController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void fetchGoalNutritions() async {
+    goalsNutritions(await _userRepo.getUserGoalsNutritions());
   }
 
   void back() {
