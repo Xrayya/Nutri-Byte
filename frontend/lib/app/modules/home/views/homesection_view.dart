@@ -124,8 +124,9 @@ class HomesectionView extends GetView<HomeController> {
                                                   ],
                                                 ),
                                         )),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8),
+                                    Container(
+                                      padding: const EdgeInsets.all(8),
+                                      alignment: Alignment.centerRight,
                                       child: nutriByteButton(
                                         onPressed: () => Get.toNamed(
                                           Routes.DETAIL_NUTRITION,
