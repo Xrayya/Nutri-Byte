@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:gradient_progress_bar/gradient_progress_bar.dart';
 import 'package:nutri_byte/app/core/values/strings.dart';
-import 'package:nutri_byte/app/routes/app_pages.dart';
 import 'package:nutri_byte/app/widgets/nutribyte_button.dart';
 
 import '../controllers/register_controller.dart';
@@ -11,14 +9,14 @@ import '../controllers/register_controller.dart';
 class RegisterView extends GetView<RegisterController> {
   const RegisterView({Key? key}) : super(key: key);
   Future<void> next() async {
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 300));
     if (controller.index.value <= 8) {
       controller.index.value++;
     }
     if (controller.index.value == 9) {
       print('runn');
       controller.register();
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
     }
   }
 
@@ -61,7 +59,7 @@ class RegisterView extends GetView<RegisterController> {
                       ),
                     ),
                     Obx(
-                      () => GradientProgressIndicator([
+                      () => GradientProgressIndicator(const [
                         Color(0xFFC4EFAC),
                         Color(0xFF8EDF81),
                         Color(0xFF7CBC71),

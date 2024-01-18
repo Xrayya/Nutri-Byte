@@ -12,10 +12,10 @@ class NutriByteBackButton extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: FloatingActionButton(
           heroTag: UniqueKey(),
-          child: Icon(Icons.arrow_back),
           onPressed: () => Get.back(),
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(9999))),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
     );

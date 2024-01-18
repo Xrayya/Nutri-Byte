@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/utils/color_utils.dart';
 import 'package:nutri_byte/app/core/values/strings.dart';
 import 'package:nutri_byte/app/widgets/nutribyte_back_button.dart';
 import 'package:nutri_byte/app/widgets/nutribyte_button.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/detailprofile_controller.dart';
 
@@ -193,7 +191,7 @@ class DetailprofileView extends GetView<DetailprofileController> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               SizedBox(

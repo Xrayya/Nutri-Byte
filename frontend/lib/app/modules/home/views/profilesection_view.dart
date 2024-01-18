@@ -12,7 +12,7 @@ class ProfilesectionView extends GetView<HomeController> {
     return Scaffold(
       body: Obx(
         () => controller.isLoading.value == true
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : SingleChildScrollView(

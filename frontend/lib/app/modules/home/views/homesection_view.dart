@@ -148,11 +148,11 @@ class HomesectionView extends GetView<HomeController> {
                             Card(
                               elevation: 5,
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "BMI",
                                       style: TextStyle(
                                         fontSize: 22,
@@ -172,8 +172,10 @@ class HomesectionView extends GetView<HomeController> {
                                         ),
                                       ],
                                     ),
-                                    LinearProgressIndicator(
-                                      value: 0.25,
+                                    Obx(
+                                      () => LinearProgressIndicator(
+                                        value: controller.bmi.value ?? 0,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -198,7 +200,7 @@ class HomesectionView extends GetView<HomeController> {
                             children: [
                               Obx(
                                 () => Text(
-                                  "${controller.nutriCoin.value} NutriCoins",
+                                  "${controller.currentUser.value?.points.toString() ?? '0'} NutriCoins",
                                   style: Get.textTheme.titleLarge!.copyWith(
                                     color: Get.theme.colorScheme.onPrimary,
                                   ),

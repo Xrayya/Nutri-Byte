@@ -12,11 +12,10 @@ class HomeController extends GetxController {
   ];
   final Rxn<NutribyteUser?> currentUser = Rxn<NutribyteUser?>();
   final Rxn<int?> nutriCoin = Rxn<int?>();
+  final Rxn<double?> bmi = Rxn<double?>();
   final navbarIndex = 0.obs;
   final isLoading = false.obs;
   static HomeController get i => Get.find<HomeController>();
-
-  static HomeController get i => Get.find();
 
   @override
   void onInit() {
@@ -28,6 +27,7 @@ class HomeController extends GetxController {
     super.onReady();
     await fetchUser();
     nutriCoin(0);
+    bmi(0.25);
   }
 
   @override

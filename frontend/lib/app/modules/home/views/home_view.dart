@@ -1,14 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nutri_byte/app/core/theme/colors.dart';
 import 'package:nutri_byte/app/core/utils/color_utils.dart';
-import 'package:nutri_byte/app/data/models/chart_data.dart';
 import 'package:nutri_byte/app/modules/home/views/homesection_view.dart';
 import 'package:nutri_byte/app/modules/home/views/profilesection_view.dart';
 import 'package:nutri_byte/app/routes/app_pages.dart';
-import 'package:nutri_byte/app/widgets/fab_with_button.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/home_controller.dart';
 
