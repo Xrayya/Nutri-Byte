@@ -19,6 +19,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Get.theme.colorScheme.primary.tone(70),
+        heroTag: "scan",
         onPressed: () => Get.toNamed(Routes.SCANFOOD),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(9999))),

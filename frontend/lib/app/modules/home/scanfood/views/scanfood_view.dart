@@ -113,6 +113,7 @@ class ScanfoodView extends GetView<ScanfoodController> {
                                   width: 50,
                                 ),
                                 FloatingActionButton(
+                                  heroTag: 'scanfood_camera',
                                   onPressed: () => controller.scanSingleImage(),
                                   backgroundColor:
                                       Get.theme.colorScheme.primary.tone(60),

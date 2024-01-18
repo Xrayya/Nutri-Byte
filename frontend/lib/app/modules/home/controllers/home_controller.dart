@@ -16,6 +16,8 @@ class HomeController extends GetxController {
   final isLoading = false.obs;
   static HomeController get i => Get.find<HomeController>();
 
+  static HomeController get i => Get.find();
+
   @override
   void onInit() {
     super.onInit();
