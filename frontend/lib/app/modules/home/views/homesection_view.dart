@@ -206,22 +206,22 @@ class HomesectionView extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  FABWithLabel(
-                                    label: "Quest",
-                                    child: const Icon(Icons.checklist),
-                                    onPress: () {
-                                      Get.toNamed(Routes.QUESTS);
-                                    },
-                                  ),
-                                  FABWithLabel(
-                                    label: "Rewards",
-                                    child: const Icon(Icons.card_giftcard),
-                                    onPress: () => Get.toNamed(Routes.REWARDS),
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     FABWithLabel(
+                              //       label: "Quest",
+                              //       child: const Icon(Icons.checklist),
+                              //       onPress: () {
+                              //         Get.toNamed(Routes.QUESTS);
+                              //       },
+                              //     ),
+                              //     FABWithLabel(
+                              //       label: "Rewards",
+                              //       child: const Icon(Icons.card_giftcard),
+                              //       onPress: () => Get.toNamed(Routes.REWARDS),
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),

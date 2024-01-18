@@ -42,41 +42,37 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                       child: const Icon(Icons.arrow_back),
                     ),
                   ),
-                  Obx(
-                    () => SfCircularChart(
-                      // TODO: custom legend
-                      legend: const Legend(
-                        isVisible: true,
-                        position: LegendPosition.bottom,
-                        orientation: LegendItemOrientation.vertical,
-                        height: '100%',
-                      ),
-                      borderWidth: 1,
-                      series: [
-                        RadialBarSeries<ChartData, String>(
-                          dataSource: controller.pieData.toList(),
-                          xValueMapper: (ChartData data, _) =>
-                              data.nutritionName,
-                          yValueMapper: (ChartData data, _) => data.percentage,
-                          dataLabelMapper: (ChartData data, _) => data.text,
-                          cornerStyle: CornerStyle.bothCurve,
-                          gap: '10%',
-                          radius: '100%',
-                          maximumValue: 100,
-                        ),
-                      ],
-                      annotations: const [
-                        CircularChartAnnotation(
-                          height: '90%',
-                          width: '90%',
-                          widget: CircleAvatar(
-                            backgroundImage:
-                                AssetImage('images/placeholder.png'),
-                          ),
-                        ),
-                      ],
+                  SfCircularChart(
+                    // TODO: custom legend
+                    legend: const Legend(
+                      isVisible: true,
+                      position: LegendPosition.bottom,
+                      orientation: LegendItemOrientation.vertical,
+                      height: '100%',
                     ),
-                  )
+                    borderWidth: 1,
+                    series: [
+                      RadialBarSeries<ChartData, String>(
+                        dataSource: controller.pieData,
+                        xValueMapper: (ChartData data, _) => data.nutritionName,
+                        yValueMapper: (ChartData data, _) => data.percentage,
+                        dataLabelMapper: (ChartData data, _) => data.text,
+                        cornerStyle: CornerStyle.bothCurve,
+                        gap: '10%',
+                        radius: '100%',
+                        maximumValue: 100,
+                      ),
+                    ],
+                    annotations: const [
+                      CircularChartAnnotation(
+                        height: '90%',
+                        width: '90%',
+                        widget: CircleAvatar(
+                          backgroundImage: AssetImage('images/placeholder.png'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
