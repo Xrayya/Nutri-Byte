@@ -27,7 +27,7 @@ class QuestsView extends GetView<QuestsController> {
                 children: controller.quests
                     .toList()
                     .map((quest) => Card(
-                          margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
+                          margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                           clipBehavior: Clip.hardEdge,
                           elevation: 4,
                           child: ListTile(

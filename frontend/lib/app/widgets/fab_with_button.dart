@@ -19,6 +19,7 @@ class FABWithLabel extends StatelessWidget {
       child: Column(
         children: [
           FloatingActionButton.small(
+            heroTag: UniqueKey(),
             onPressed: onPress,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

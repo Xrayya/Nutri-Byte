@@ -32,8 +32,16 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
               ),
               color: Theme.of(context).colorScheme.primaryContainer,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const NutriByteBackButton(),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: FloatingActionButton(
+                      heroTag: UniqueKey(),
+                      onPressed: () => Get.back(),
+                      child: const Icon(Icons.arrow_back),
+                    ),
+                  ),
                   Obx(
                     () => SfCircularChart(
                       // TODO: custom legend

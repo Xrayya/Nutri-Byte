@@ -69,7 +69,7 @@ class ScanfoodView extends GetView<ScanfoodController> {
                                         'Scanning the food',
                                         style: Get.textTheme.labelLarge,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       const CircularProgressIndicator()

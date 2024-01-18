@@ -21,11 +21,11 @@ class RewardRepository {
   Future<bool> exchangeReward(Reward reward) async {
     final userTransaction = await _rewardProvider.getRewardTransactions();
     bool isUnique = true;
-    userTransaction.forEach((element) {
+    for (var element in userTransaction) {
       if (element.name == reward.name) {
         isUnique = false;
       }
-    });
+    }
 
     if (!isUnique) {
       return false;

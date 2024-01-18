@@ -134,7 +134,7 @@ class RewardsView extends GetView<RewardsController> {
                           .copyWith(color: Get.theme.colorScheme.primary),
                     ),
                     Text(
-                      '${price} NutriCoins',
+                      '$price NutriCoins',
                       style: Get.textTheme.bodyLarge!
                           .copyWith(color: Get.theme.colorScheme.primary),
                     )
