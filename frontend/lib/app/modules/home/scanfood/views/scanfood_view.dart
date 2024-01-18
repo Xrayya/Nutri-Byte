@@ -15,70 +15,67 @@ class ScanfoodView extends GetView<ScanfoodController> {
         () => controller.cameraController.value != null
             ? Stack(
                 children: [
-                  Expanded(
-                    child: IntrinsicHeight(
-                      child: Stack(
-                        children: [
-                          Obx(
-                            () => IntrinsicHeight(
-                              child: Stack(
-                                children: [
-                                  CameraPreview(
-                                      controller.cameraController.value!),
-                                  Container(
-                                    color: controller.isProcessing.value
-                                        ? Colors.white.withOpacity(0.5)
-                                        : Colors.transparent,
-                                  )
-                                ],
-                              ),
+                  IntrinsicHeight(
+                    child: Stack(
+                      children: [
+                        Obx(
+                          () => IntrinsicHeight(
+                            child: Stack(
+                              children: [
+                                CameraPreview(
+                                    controller.cameraController.value!),
+                                Container(
+                                  color: controller.isProcessing.value
+                                      ? Colors.white.withOpacity(0.5)
+                                      : Colors.transparent,
+                                )
+                              ],
                             ),
                           ),
-                          Positioned(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () => Get.back(),
-                                    icon: const Icon(Icons.close),
+                        ),
+                        Positioned(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconButton(
+                                  onPressed: () => Get.back(),
+                                  icon: const Icon(Icons.close),
+                                  color: Colors.black,
+                                ),
+                                Obx(
+                                  () => IconButton(
+                                    onPressed: () => controller.toggleFlash(),
+                                    icon: Icon(controller.isFlashOn.value
+                                        ? Icons.flash_on
+                                        : Icons.flash_off),
                                     color: Colors.black,
                                   ),
-                                  Obx(
-                                    () => IconButton(
-                                      onPressed: () => controller.toggleFlash(),
-                                      icon: Icon(controller.isFlashOn.value
-                                          ? Icons.flash_on
-                                          : Icons.flash_off),
-                                      color: Colors.black,
-                                    ),
-                                  )
-                                ],
-                              ),
+                                )
+                              ],
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.center,
-                            child: controller.isProcessing.value
-                                ? Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Scanning the food',
-                                        style: Get.textTheme.labelLarge,
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      const CircularProgressIndicator()
-                                    ],
-                                  )
-                                : Container(),
-                          )
-                        ],
-                      ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: controller.isProcessing.value
+                              ? Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Scanning the food',
+                                      style: Get.textTheme.labelLarge,
+                                    ),
+                                    const SizedBox(
+                                      height: 8,
+                                    ),
+                                    const CircularProgressIndicator()
+                                  ],
+                                )
+                              : Container(),
+                        )
+                      ],
                     ),
                   ),
                   Column(
