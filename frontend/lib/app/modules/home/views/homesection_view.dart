@@ -78,7 +78,7 @@ class HomesectionView extends GetView<HomeController> {
                                     Flexible(
                                         fit: FlexFit.tight,
                                         child: Obx(
-                                          () => controller.pieData.isEmpty
+                                          () => controller.pieData.value == null
                                               ? const Center(
                                                   child:
                                                       CircularProgressIndicator(),
@@ -93,8 +93,8 @@ class HomesectionView extends GetView<HomeController> {
                                                   series: [
                                                     RadialBarSeries<ChartData,
                                                         String>(
-                                                      dataSource:
-                                                          controller.pieData,
+                                                      dataSource: controller
+                                                          .pieData.value,
                                                       xValueMapper: (ChartData
                                                                   data,
                                                               _) =>
@@ -129,6 +129,7 @@ class HomesectionView extends GetView<HomeController> {
                                       child: nutriByteButton(
                                         onPressed: () => Get.toNamed(
                                           Routes.DETAIL_NUTRITION,
+                                          arguments: controller.todayLog.value,
                                         ),
                                         text: "See More",
                                       ),
@@ -217,22 +218,22 @@ class HomesectionView extends GetView<HomeController> {
                                   ),
                                 ),
                               ),
-                              // Row(
-                              //   children: [
-                              //     FABWithLabel(
-                              //       label: "Quest",
-                              //       child: const Icon(Icons.checklist),
-                              //       onPress: () {
-                              //         Get.toNamed(Routes.QUESTS);
-                              //       },
-                              //     ),
-                              //     FABWithLabel(
-                              //       label: "Rewards",
-                              //       child: const Icon(Icons.card_giftcard),
-                              //       onPress: () => Get.toNamed(Routes.REWARDS),
-                              //     ),
-                              //   ],
-                              // ),
+                              Row(
+                                children: [
+                                  FABWithLabel(
+                                    label: "Quest",
+                                    child: const Icon(Icons.checklist),
+                                    onPress: () {
+                                      Get.toNamed(Routes.QUESTS);
+                                    },
+                                  ),
+                                  FABWithLabel(
+                                    label: "Rewards",
+                                    child: const Icon(Icons.card_giftcard),
+                                    onPress: () => Get.toNamed(Routes.REWARDS),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),

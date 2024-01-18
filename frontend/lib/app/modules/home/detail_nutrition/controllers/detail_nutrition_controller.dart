@@ -1,17 +1,15 @@
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/data/models/chart_data.dart';
+import 'package:nutri_byte/app/data/models/daily_log.dart';
 
 class DetailNutritionController extends GetxController {
-  RxList<ChartData> pieData = RxList<ChartData>();
+  final todayLog = Get.arguments as DailyLog;
+  Rx<List<ChartData>> pieData = Rx<List<ChartData>>([]);
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    pieData([
-      ChartData("Carbs", 98, 400),
-      ChartData("Protein", 200, 250),
-      ChartData("Fat", 20, 40)
-    ]);
+    await fetchTodayLog();
   }
 
   @override
@@ -22,5 +20,14 @@ class DetailNutritionController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> fetchTodayLog() async {
+    pieData([
+      ChartData("Carbs", todayLog.carbs, todayLog.targetCarbs),
+      ChartData("Protein", todayLog.protein, todayLog.targetProtein),
+      ChartData("Fat", todayLog.fats, todayLog.targetFats)
+    ]);
+    pieData.refresh();
   }
 }

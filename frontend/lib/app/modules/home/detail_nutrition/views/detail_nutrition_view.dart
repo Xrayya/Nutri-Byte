@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/data/models/chart_data.dart';
-import 'package:nutri_byte/app/widgets/nutribyte_back_button.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../controllers/detail_nutrition_controller.dart';
-
-var data = [
-  ["Total Calories", ":", "1844.17", "Kcal"],
-  ["Net Calories", ":", "1844.17", "Kcal"],
-  ["Goal", ":", "1637", "Kcal"]
-];
 
 class DetailNutritionView extends GetView<DetailNutritionController> {
   const DetailNutritionView({Key? key}) : super(key: key);
@@ -53,8 +45,9 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                     borderWidth: 1,
                     series: [
                       RadialBarSeries<ChartData, String>(
-                        dataSource: controller.pieData,
-                        xValueMapper: (ChartData data, _) => data.nutritionName,
+                        dataSource: controller.pieData.value,
+                        xValueMapper: (ChartData data, _) =>
+                            "${data.nutritionName} | ${data.currentProgress.toPrecision(2)} g / ${data.target.toPrecision(2)} g",
                         yValueMapper: (ChartData data, _) => data.percentage,
                         dataLabelMapper: (ChartData data, _) => data.text,
                         cornerStyle: CornerStyle.bothCurve,
@@ -82,22 +75,80 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                 elevation: 5,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(38, 52, 38, 52),
-                  child: Table(
-                    columnWidths: {
-                      1: const FixedColumnWidth(20),
-                      data[0].length - 1: const IntrinsicColumnWidth()
-                    },
-                    border: TableBorder.all(style: BorderStyle.none),
-                    children: data
-                        .map((row) => TableRow(
-                            children: row
-                                .map((cell) => TableCell(
-                                        child: Text(
-                                      cell,
-                                      overflow: TextOverflow.ellipsis,
-                                    )))
-                                .toList()))
-                        .toList(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Total Calories",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                          Text(
+                            "Goal",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            ":",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                          Text(
+                            ":",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.todayLog.calories
+                                .toPrecision(2)
+                                .toString(),
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                          Text(
+                            controller.todayLog.targetCalories
+                                .toPrecision(2)
+                                .toString(),
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "Kcal",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                          Text(
+                            "Kcal",
+                            style: Get.textTheme.bodyLarge!.copyWith(
+                              color: Color(0xFF294B19),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),

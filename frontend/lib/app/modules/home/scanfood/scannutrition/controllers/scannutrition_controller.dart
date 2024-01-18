@@ -5,6 +5,7 @@ import 'package:nutri_byte/app/data/models/food.dart';
 import 'package:nutri_byte/app/data/models/nutritions.dart';
 import 'package:nutri_byte/app/data/services/food_repository.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
+import 'package:nutri_byte/app/modules/home/controllers/home_controller.dart';
 import 'package:nutri_byte/app/modules/home/scanfood/controllers/scanfood_controller.dart';
 
 class ScannutritionController extends GetxController {
@@ -16,6 +17,7 @@ class ScannutritionController extends GetxController {
   final scanFoodController = Get.find<ScanfoodController>();
   final Rxn<Nutritions> goalsNutritions = Rxn<Nutritions>();
   final count = 0.obs;
+  final _homeController = HomeController.i;
   @override
   void onInit() {
     super.onInit();
@@ -73,6 +75,7 @@ class ScannutritionController extends GetxController {
           await _userRepo.addNewDailyLog(newLog);
         }
       }
+      await _homeController.fetchTodayLog();
       back();
       Get.snackbar('Success', 'Food added to daily log',
           snackPosition: SnackPosition.BOTTOM);
