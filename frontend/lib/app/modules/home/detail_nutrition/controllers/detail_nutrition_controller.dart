@@ -11,13 +11,13 @@ class DetailNutritionController extends GetxController {
 
   @override
   void onReady() {
+    super.onReady();
     pieData([
       ChartData("Carbs", 98, 400),
       ChartData("Protein", 200, 250),
       ChartData("Fat", 20, 40)
     ]);
 
-    super.onReady();
   }
 
   @override
