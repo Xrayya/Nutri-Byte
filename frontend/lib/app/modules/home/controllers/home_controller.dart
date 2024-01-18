@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:nutri_byte/app/data/models.dart';
+import 'package:nutri_byte/app/data/models/chart_data.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
 

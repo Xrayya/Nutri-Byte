@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/data/models/chart_data.dart';
 
 class DetailNutritionController extends GetxController {
-  //TODO: Implement DetailNutritionController
+  RxList<ChartData> pieData = RxList<ChartData>();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -11,6 +11,12 @@ class DetailNutritionController extends GetxController {
 
   @override
   void onReady() {
+    pieData([
+      ChartData("Carbs", 98, 400),
+      ChartData("Protein", 200, 250),
+      ChartData("Fat", 20, 40)
+    ]);
+
     super.onReady();
   }
 
@@ -18,6 +24,4 @@ class DetailNutritionController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

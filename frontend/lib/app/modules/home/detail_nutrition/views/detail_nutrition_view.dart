@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/data/models/chart_data.dart';
+import 'package:nutri_byte/app/widgets/nutribyte_back_button.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-import '../../../../data/models.dart';
 import '../controllers/detail_nutrition_controller.dart';
-
-var pieData = <ChartData>[
-  ChartData("Carbs", 98, 400),
-  ChartData("Protein", 200, 250),
-  ChartData("Fat", 20, 40)
-];
 
 var data = [
   ["Total Calories", ":", "1844.17", "Kcal"],
@@ -28,8 +23,8 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
           children: [
             Card(
               elevation: 5,
-              margin: EdgeInsets.all(0),
-              shape: RoundedRectangleBorder(
+              margin: const EdgeInsets.all(0),
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
@@ -38,51 +33,42 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
               color: Theme.of(context).colorScheme.primaryContainer,
               child: Column(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: FloatingActionButton(
-                        heroTag: 'nutritiondetail_back',
-                        child: Icon(Icons.arrow_back),
-                        onPressed: () => Get.back(),
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(9999))),
+                  const NutriByteBackButton(),
+                  Obx(
+                    () => SfCircularChart(
+                      // TODO: custom legend
+                      legend: const Legend(
+                        isVisible: true,
+                        position: LegendPosition.bottom,
+                        orientation: LegendItemOrientation.vertical,
+                        height: '100%',
                       ),
-                    ),
-                  ),
-                  SfCircularChart(
-                    // TODO: custom legend
-                    legend: Legend(
-                      isVisible: true,
-                      position: LegendPosition.bottom,
-                      orientation: LegendItemOrientation.vertical,
-                      height: '100%',
-                    ),
-                    borderWidth: 1,
-                    series: [
-                      RadialBarSeries<ChartData, String>(
-                        dataSource: pieData,
-                        xValueMapper: (ChartData data, _) => data.nutritionName,
-                        yValueMapper: (ChartData data, _) => data.percentage,
-                        dataLabelMapper: (ChartData data, _) => data.text,
-                        cornerStyle: CornerStyle.bothCurve,
-                        gap: '10%',
-                        radius: '100%',
-                        maximumValue: 100,
-                      ),
-                    ],
-                    annotations: [
-                      CircularChartAnnotation(
-                        height: '90%',
-                        width: '90%',
-                        widget: CircleAvatar(
-                          backgroundImage: AssetImage('images/placeholder.png'),
+                      borderWidth: 1,
+                      series: [
+                        RadialBarSeries<ChartData, String>(
+                          dataSource: controller.pieData.toList(),
+                          xValueMapper: (ChartData data, _) =>
+                              data.nutritionName,
+                          yValueMapper: (ChartData data, _) => data.percentage,
+                          dataLabelMapper: (ChartData data, _) => data.text,
+                          cornerStyle: CornerStyle.bothCurve,
+                          gap: '10%',
+                          radius: '100%',
+                          maximumValue: 100,
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                      annotations: const [
+                        CircularChartAnnotation(
+                          height: '90%',
+                          width: '90%',
+                          widget: CircleAvatar(
+                            backgroundImage:
+                                AssetImage('images/placeholder.png'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -94,8 +80,8 @@ class DetailNutritionView extends GetView<DetailNutritionController> {
                   padding: const EdgeInsets.fromLTRB(38, 52, 38, 52),
                   child: Table(
                     columnWidths: {
-                      1: FixedColumnWidth(20),
-                      data[0].length - 1: IntrinsicColumnWidth()
+                      1: const FixedColumnWidth(20),
+                      data[0].length - 1: const IntrinsicColumnWidth()
                     },
                     border: TableBorder.all(style: BorderStyle.none),
                     children: data

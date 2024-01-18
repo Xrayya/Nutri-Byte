@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/theme/colors.dart';
 import 'package:nutri_byte/app/core/utils/color_utils.dart';
-import 'package:nutri_byte/app/data/models.dart';
+import 'package:nutri_byte/app/data/models/chart_data.dart';
 import 'package:nutri_byte/app/routes/app_pages.dart';
 import 'package:nutri_byte/app/widgets/fab_with_button.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
