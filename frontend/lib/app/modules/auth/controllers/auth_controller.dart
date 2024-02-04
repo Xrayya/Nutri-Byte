@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/constant.dart';
+import 'package:nutri_byte/app/data/services/user_repository.dart';
 import 'package:nutri_byte/app/routes/app_pages.dart';
 
 class AuthController extends GetxController {
   static get i => Get.find<AuthController>();
   late Rx<User?> firebaseUser;
+  final UserRepository _userRepository = Get.find<UserRepository>();
   @override
   void onInit() {
     super.onInit();
@@ -30,6 +32,7 @@ class AuthController extends GetxController {
     } else {
       final userDb = await firestore.collection('users').doc(user.uid).get();
       if (userDb.exists) {
+        await _userRepository.initLog();
         Get.offAllNamed(Routes.HOME);
       } else {
         Get.offAllNamed(Routes.REGISTER);

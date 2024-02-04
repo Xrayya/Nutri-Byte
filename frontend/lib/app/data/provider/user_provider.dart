@@ -1,6 +1,7 @@
 import 'package:nutri_byte/app/core/constant.dart';
 import 'package:nutri_byte/app/core/utils/helper.dart';
 import 'package:nutri_byte/app/core/utils/nutrition_calc.dart';
+import 'package:nutri_byte/app/core/values/quest.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
 import 'package:nutri_byte/app/data/models/nutritions.dart';
@@ -66,5 +67,25 @@ class UserProvider {
 
   Future<Nutritions?> getUserGoalsNutritions(String uid) async {
     return calculateNutrition(await getUser(uid));
+  }
+
+  Future<void> setDailyQuest(DailyLog checkLog) async {
+    if (checkLog.quests != null || checkLog.quests!.isNotEmpty) {
+      return;
+    }
+    List<int> quests = [];
+    final randomizedQuests = questList..shuffle();
+    randomizedQuests.forEach(
+      (element) {
+        if (element.onChecked(checkLog)) {
+          quests.add(element.id);
+        }
+        if (quests.length >= 3) {
+          return;
+        }
+      },
+    );
+    checkLog.quests = quests;
+    await setDailyLog(checkLog);
   }
 }

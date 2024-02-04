@@ -1,3 +1,5 @@
+import 'package:nutri_byte/app/data/models/quest.dart';
+
 class DailyLog {
   double carbs;
   double protein;
@@ -8,6 +10,9 @@ class DailyLog {
   double targetProtein;
   double targetFats;
   double targetCalories;
+  List<int>? quests;
+
+  int totalScan;
 
   DailyLog({
     required this.carbs,
@@ -18,6 +23,8 @@ class DailyLog {
     required this.targetProtein,
     required this.targetFats,
     required this.targetCalories,
+    required this.quests,
+    this.totalScan = 0,
   });
 
   factory DailyLog.fromJson(Map<String, dynamic> json) {
@@ -30,6 +37,10 @@ class DailyLog {
       targetProtein: json['targetProtein'] + .0,
       targetFats: json['targetFats'] + .0,
       targetCalories: json['targetCalories'] + .0,
+      quests: json['quests'] != null
+          ? List<int>.from(json['quests'].map((x) => x))
+          : null,
+      totalScan: json['totalScan'] ?? 0,
     );
   }
 
@@ -43,6 +54,8 @@ class DailyLog {
       'targetProtein': targetProtein,
       'targetFats': targetFats,
       'targetCalories': targetCalories,
+      'quests': quests,
+      'totalScan': totalScan,
     };
   }
 }

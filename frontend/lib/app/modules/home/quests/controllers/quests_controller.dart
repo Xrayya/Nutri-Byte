@@ -12,23 +12,6 @@ class QuestsController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    quests([
-      Quest(
-        title: "Don't eat more than the daily limit!",
-        coin: 5,
-        completed: true,
-      ),
-      Quest(
-        title: "Don’t eat more than 44g of fat",
-        coin: 10,
-        completed: false,
-      ),
-      Quest(
-        title: "Scan 2 foods today",
-        coin: 5,
-        completed: false,
-      )
-    ]);
   }
 
   @override
