@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import '../modules/auth/REGISTER/bindings/register_binding.dart';
 import '../modules/auth/REGISTER/views/register_view.dart';
 import '../modules/auth/bindings/auth_binding.dart';
+import '../modules/auth/email_verification/bindings/email_verification_binding.dart';
+import '../modules/auth/email_verification/views/email_verification_view.dart';
 import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/signin/bindings/signin_binding.dart';
@@ -89,6 +91,11 @@ class AppPages {
           name: _Paths.REGISTER,
           page: () => const RegisterView(),
           binding: RegisterBinding(),
+        ),
+        GetPage(
+          name: _Paths.EMAIL_VERIFICATION,
+          page: () => const EmailVerificationView(),
+          binding: EmailVerificationBinding(),
         ),
       ],
     ),
