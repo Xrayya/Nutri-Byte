@@ -64,4 +64,34 @@ class UserRepository {
   Future<Nutritions?> getUserGoalsNutritions() {
     return userProvider.getUserGoalsNutritions(auth.currentUser!.uid);
   }
+
+  Future<void> setQuest() async {
+    final checkLog = await userProvider.getDailyLog();
+    if (checkLog != null) {
+      await userProvider.setDailyQuest(checkLog);
+    }
+  }
+
+  Future<void> initLog() async {
+    final checkLog = await userProvider.getDailyLog();
+    if (checkLog == null) {
+      final userGoals =
+          await userProvider.getUserGoalsNutritions(auth.currentUser!.uid);
+      if (userGoals != null) {
+        final newLog = DailyLog(
+          targetCalories: userGoals.calories,
+          targetCarbs: userGoals.carbsGr,
+          targetFats: userGoals.fatGr,
+          targetProtein: userGoals.proteinGr,
+          calories: 0,
+          carbs: 0,
+          fats: 0,
+          protein: 0,
+          quests: [],
+        );
+        await userProvider.setDailyLog(newLog);
+        await setQuest();
+      }
+    }
+  }
 }

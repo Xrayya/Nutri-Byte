@@ -63,15 +63,17 @@ class ScannutritionController extends GetxController {
       } else {
         if (food.value != null) {
           final newLog = DailyLog(
-              // TODO: add functionality to calculate target calories, fats, carbs, and protein from users
-              targetCalories: goalsNutritions.value!.calories,
-              targetCarbs: goalsNutritions.value!.carbsGr,
-              targetFats: goalsNutritions.value!.fatGr,
-              targetProtein: goalsNutritions.value!.proteinGr,
-              calories: food.value!.calories,
-              carbs: food.value!.carbs,
-              fats: food.value!.fats,
-              protein: food.value!.protein);
+            // TODO: add functionality to calculate target calories, fats, carbs, and protein from users
+            targetCalories: goalsNutritions.value!.calories,
+            targetCarbs: goalsNutritions.value!.carbsGr,
+            targetFats: goalsNutritions.value!.fatGr,
+            targetProtein: goalsNutritions.value!.proteinGr,
+            calories: food.value!.calories,
+            carbs: food.value!.carbs,
+            fats: food.value!.fats,
+            protein: food.value!.protein,
+            quests: [],
+          );
           await _userRepo.addNewDailyLog(newLog);
         }
       }
