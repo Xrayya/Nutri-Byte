@@ -70,7 +70,7 @@ class UserProvider {
   }
 
   Future<void> setDailyQuest(DailyLog checkLog) async {
-    if (checkLog.quests != null || checkLog.quests!.isNotEmpty) {
+    if (checkLog.quests != null && checkLog.quests!.isNotEmpty) {
       return;
     }
     List<int> quests = [];
