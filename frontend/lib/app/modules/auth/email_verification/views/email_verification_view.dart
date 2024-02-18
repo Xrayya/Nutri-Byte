@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:nutri_byte/app/core/theme/colors.dart';
-import 'package:nutri_byte/app/routes/app_pages.dart';
 
 import '../controllers/email_verification_controller.dart';
 
@@ -36,6 +33,14 @@ class EmailVerificationView extends GetView<EmailVerificationController> {
                       fontSize: 36,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF294B19)),
+                ),
+                Obx(
+                  () => Text(
+                    "Verification status: ${controller.isVerfied}",
+                    style: Get.textTheme.bodyMedium!.copyWith(
+                      color: Color(0xFF446832),
+                    ),
+                  ),
                 ),
                 Text(
                   "Please click the verification link to in you email",

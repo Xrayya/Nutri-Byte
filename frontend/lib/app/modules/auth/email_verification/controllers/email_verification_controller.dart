@@ -1,16 +1,16 @@
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/core/constant.dart';
 
 class EmailVerificationController extends GetxController {
-  //TODO: Implement EmailVerificationController
+  final Rxn<bool?> isVerfied = Rxn<bool?>();
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
   }
 
@@ -19,5 +19,8 @@ class EmailVerificationController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  Future<void> checkVerified() async {
+    bool temp = auth.currentUser!.emailVerified;
+    isVerfied(temp);
+  }
 }
