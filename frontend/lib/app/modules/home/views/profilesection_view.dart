@@ -195,7 +195,7 @@ class ProfilesectionView extends GetView<HomeController> {
                           profileButtonTile(
                             icon: Icons.logout_sharp,
                             text: 'Log Out',
-                            onTap: () {},
+                            onTap: () => controller.signOut(),
                           ),
                           const SizedBox(
                             height: 14,
