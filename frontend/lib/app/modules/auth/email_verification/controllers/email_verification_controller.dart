@@ -12,6 +12,8 @@ class EmailVerificationController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
+    await checkVerified();
+    await sendEmainVerification();
   }
 
   @override
@@ -22,5 +24,9 @@ class EmailVerificationController extends GetxController {
   Future<void> checkVerified() async {
     bool temp = auth.currentUser!.emailVerified;
     isVerfied(temp);
+  }
+
+  Future<void> sendEmainVerification() async {
+    auth.currentUser!.sendEmailVerification();
   }
 }
