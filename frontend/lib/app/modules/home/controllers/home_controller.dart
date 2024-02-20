@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:nutri_byte/app/core/constant.dart';
 import 'package:nutri_byte/app/data/models/chart_data.dart';
 import 'package:nutri_byte/app/data/models/daily_log.dart';
 import 'package:nutri_byte/app/data/models/nutribyte_user.dart';
+import 'package:nutri_byte/app/data/services/auth_repository.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
 
 class HomeController extends GetxController {
@@ -15,6 +17,7 @@ class HomeController extends GetxController {
   final Rxn<DailyLog?> todayLog = Rxn<DailyLog?>();
   final navbarIndex = 0.obs;
   final isLoading = false.obs;
+  final authRepo = AuthRepository();
   static HomeController get i => Get.find<HomeController>();
 
   @override
@@ -59,5 +62,9 @@ class HomeController extends GetxController {
     isLoading(true);
     currentUser(await userRepo.getUser());
     isLoading(false);
+  }
+
+  Future<void> signOut() async {
+    await authRepo.signOut();
   }
 }

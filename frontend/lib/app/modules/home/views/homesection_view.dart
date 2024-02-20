@@ -222,6 +222,13 @@ class HomesectionView extends GetView<HomeController> {
                               Row(
                                 children: [
                                   FABWithLabel(
+                                    label: "Email",
+                                    child: const Icon(Icons.mail),
+                                    onPress: () {
+                                      Get.toNamed(Routes.EMAIL_VERIFICATION);
+                                    },
+                                  ),
+                                  FABWithLabel(
                                     label: "Quest",
                                     child: const Icon(Icons.checklist),
                                     onPress: () {

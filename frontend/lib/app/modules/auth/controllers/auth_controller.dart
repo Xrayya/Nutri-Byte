@@ -30,6 +30,9 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAllNamed(Routes.LOGIN);
     } else {
+      await auth.currentUser!.reload();
+      if (user.emailVerified == false) {
+        Get.offAllNamed(Routes.EMAIL_VERIFICATION);
       final userDb = await firestore.collection('users').doc(user.uid).get();
       if (userDb.exists) {
         await _userRepository.initLog();
