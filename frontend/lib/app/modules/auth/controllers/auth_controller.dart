@@ -28,7 +28,7 @@ class AuthController extends GetxController {
 
   _setScreen(User? user) async {
     if (user == null) {
-      Get.offAllNamed(Routes.LOGIN);
+      Get.offAllNamed(Routes.ONBOARDING);
     } else {
       final userDb = await firestore.collection('users').doc(user.uid).get();
       if (userDb.exists) {

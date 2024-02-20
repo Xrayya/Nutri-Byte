@@ -18,6 +18,7 @@ abstract class Routes {
   static const QUESTS = _Paths.HOME + _Paths.QUESTS;
   static const REWARDS = _Paths.HOME + _Paths.REWARDS;
   static const DETAILPROFILE = _Paths.HOME + _Paths.DETAILPROFILE;
+  static const ONBOARDING = _Paths.ONBOARDING;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const QUESTS = '/quests';
   static const REWARDS = '/rewards';
   static const DETAILPROFILE = '/detailprofile';
+  static const ONBOARDING = '/onboarding';
 }

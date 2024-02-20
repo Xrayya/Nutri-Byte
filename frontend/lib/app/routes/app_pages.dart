@@ -22,6 +22,8 @@ import '../modules/home/scanfood/scannutrition/bindings/scannutrition_binding.da
 import '../modules/home/scanfood/scannutrition/views/scannutrition_view.dart';
 import '../modules/home/scanfood/views/scanfood_view.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/onboarding/bindings/onboarding_binding.dart';
+import '../modules/onboarding/views/onboarding_view.dart';
 
 part 'app_routes.dart';
 
@@ -91,6 +93,11 @@ class AppPages {
           binding: RegisterBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => const OnboardingView(),
+      binding: OnboardingBinding(),
     ),
   ];
 }
