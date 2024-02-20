@@ -6,10 +6,10 @@
 
 We are a team, consist of 4 people:
 
-- Choiruddin Yusuf Setyawardhana (Hustler)
-- Hasna Widhia Kusuma (Hipster)
-- Azhary Munir Abdillah (Hacker)
-- Alvin Kamal Nasich (Hacker)
+- Choiruddin Yusuf Setyawardhana (Product Manager)
+- Hasna Widhia Kusuma (Product Designer)
+- Azhary Munir Abdillah (Developer)
+- Alvin Kamal Nasich (Developer)
 
 ## Key Features
 
