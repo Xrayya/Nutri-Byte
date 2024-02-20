@@ -19,6 +19,7 @@ abstract class Routes {
   static const REWARDS = _Paths.HOME + _Paths.REWARDS;
   static const DETAILPROFILE = _Paths.HOME + _Paths.DETAILPROFILE;
   static const EMAIL_VERIFICATION = _Paths.AUTH + _Paths.EMAIL_VERIFICATION;
+  static const ONBOARDING = _Paths.ONBOARDING;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const REWARDS = '/rewards';
   static const DETAILPROFILE = '/detailprofile';
   static const EMAIL_VERIFICATION = '/email-verification';
+  static const ONBOARDING = '/onboarding';
 }
