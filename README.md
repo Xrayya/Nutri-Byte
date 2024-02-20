@@ -35,11 +35,13 @@ We are a team, consist of 4 people:
 - Flutter >= 3.16.6
 - Android Studio
 - Java 17 or newer
+- Android 8.0 (Oreo) or higher (not yet tested on IOS and not yet available on Windows/Mac/Linux)
 
 ### Building Steps
 
 1. Clone this repo
-2. Install dependencies:
+2. Make sure your Android phone connected through adb and developer mode is activated
+3. Install dependencies:
 ```
 flutter pub get
 ```
