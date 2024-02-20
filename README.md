@@ -29,12 +29,16 @@ We are a team, consist of 4 people:
 * **Database:** [Firebase](https://firebase.google.com/) (Firebase Auth, Cloud Firestore)
 * **AI Model:** [Keras](https://keras.io/)
 
+## How to Install
+- Donwload the .apk binary from our [Releases](https://github.com/Xrayya/Nutri-Byte/releases) page
+- Or, [build manually](#manual-build)
+
 ## Manual Build
 
 ### Requirements
-- Flutter >= 3.16.6
+- Flutter 3.16.6 or newer
 - Android Studio
-- Java 17 or newer
+- JDK 17 or newer
 - Android 8.0 (Oreo) or higher (not yet tested on IOS and not yet available on Windows/Mac/Linux)
 
 ### Building Steps
