@@ -28,11 +28,16 @@ class AuthController extends GetxController {
     if (user == null) {
       Get.offAllNamed(Routes.LOGIN);
     } else {
-      final userDb = await firestore.collection('users').doc(user.uid).get();
-      if (userDb.exists) {
-        Get.offAllNamed(Routes.HOME);
+      await auth.currentUser!.reload();
+      if (user.emailVerified == false) {
+        Get.offAllNamed(Routes.EMAIL_VERIFICATION);
       } else {
-        Get.offAllNamed(Routes.REGISTER);
+        final userDb = await firestore.collection('users').doc(user.uid).get();
+        if (userDb.exists) {
+          Get.offAllNamed(Routes.HOME);
+        } else {
+          Get.offAllNamed(Routes.REGISTER);
+        }
       }
     }
   }

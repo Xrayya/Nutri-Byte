@@ -56,7 +56,7 @@ class EmailVerificationView extends GetView<EmailVerificationController> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () => {},
+                  onPressed: controller.sendEmainVerification,
                   child: Text(
                     'Resend Verification Link',
                     style:

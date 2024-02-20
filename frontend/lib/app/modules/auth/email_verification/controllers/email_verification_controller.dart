@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/constant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EmailVerificationController extends GetxController {
   final Rxn<bool?> isVerfied = Rxn<bool?>();
@@ -27,6 +29,30 @@ class EmailVerificationController extends GetxController {
   }
 
   Future<void> sendEmainVerification() async {
-    auth.currentUser!.sendEmailVerification();
+    bool isLimited = await checkIsLimited();
+    if (isLimited) {
+      Get.snackbar(
+        "Error",
+        "You can only send verification email once in 1 minute",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('timestamp', DateTime.now().millisecondsSinceEpoch);
+    await auth.currentUser!.sendEmailVerification();
+    await Future.delayed(Duration(seconds: 3));
+    await auth.currentUser!.reload();
+  }
+
+  Future<bool> checkIsLimited() async {
+    final prefs = await SharedPreferences.getInstance();
+    int? timestamp = prefs.getInt('timestamp');
+    if (timestamp != null) {
+      if (DateTime.now().millisecondsSinceEpoch - timestamp > 60000) {
+        return false;
+      }
+    }
+    return true;
   }
 }

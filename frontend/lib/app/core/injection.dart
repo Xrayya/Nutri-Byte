@@ -8,6 +8,7 @@ import 'package:nutri_byte/app/data/services/food_repository.dart';
 import 'package:nutri_byte/app/data/services/reward_repository.dart';
 import 'package:nutri_byte/app/data/services/user_repository.dart';
 import 'package:nutri_byte/app/modules/auth/controllers/auth_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> injection() async {
   Get.put(AuthController());
@@ -19,4 +20,6 @@ Future<void> injection() async {
   Get.put(AuthRepository());
   Get.put(RewardProvider());
   Get.put(RewardRepository());
+
+  await SharedPreferences.getInstance();
 }
