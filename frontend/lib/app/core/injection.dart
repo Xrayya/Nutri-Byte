@@ -11,15 +11,14 @@ import 'package:nutri_byte/app/modules/auth/controllers/auth_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> injection() async {
-  Get.put(AuthController());
-  Get.put(AuthProvider());
-  Get.put(UserProvider());
   Get.put(FoodProvider());
   Get.put(FoodRepository());
-  Get.put(UserRepository());
+  Get.put(AuthProvider());
   Get.put(AuthRepository());
+  Get.put(UserProvider());
+  Get.put(UserRepository());
   Get.put(RewardProvider());
   Get.put(RewardRepository());
-
   await SharedPreferences.getInstance();
+  Get.put(AuthController());
 }
