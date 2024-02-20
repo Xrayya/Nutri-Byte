@@ -1,6 +1,6 @@
 # Nutri-Byte
 
-"Nutri Byte" is an app that aims to help achieve SDG goal 3 with the focus of a healthy way to track daily nutrition intake. The users are able to scan their foods to measure the nutrition they consume everyday and making sure that they do not over-consume certain nutrition. As of this MVP the nutrition tracker will be more focused on macro nutrition. This app is build in hopes of promoting a healthy lifestyle for the masses and will help to achieve the SDG number 3.
+"Nutri Byte" is an app that aims to help achieve SDG goal 3 with the focus of a healthy way to track daily nutrition intake. The users are able to scan their foods to measure the nutrition they consume everyday and making sure that they do not over-consume certain nutrition. Users can also track their progress over time and see how their eating habits change. This app is build in hopes of promoting a healthy lifestyle for the masses and will help to achieve the SDG number 3.
 
 ## Null Byte
 
@@ -11,6 +11,42 @@ We are a team, consist of 4 people:
 - Azhary Munir Abdillah (Hacker)
 - Alvin Kamal Nasich (Hacker)
 
+## Key Features
+
+* **Food Recognition:** Use your device's camera to take a picture of food and Nutri Byte will automatically identify the food item.
+
+* **Nutrition Tracking:** Track calories, fat, protein, carbohydrates, and other micronutrients.
+
+* **Food Journal:** Record all the food and drinks you consume throughout the day.
+
+* **Data Analysis:** See trends and patterns in your eating habits over time.
+
+* **Set Goals:** Set health goals and track your progress.
+
+## Tech Stack
+
+* **Frontend:** [Flutter](https://flutter.dev/) with [GetX](https://github.com/jonataslaw/getx) and [kaemurakami's GetX Design Pattern](https://github.com/kauemurakami/getx_pattern)
+* **Database:** [Firebase](https://firebase.google.com/) (Firebase Auth, Cloud Firestore)
+* **AI Model:** [Keras](https://keras.io/)
+
+## Manual Build
+
+### Requirements
+- Flutter >= 3.16.6
+- Android Studio
+- Java 17 or newer
+
+### Building Steps
+
+1. Clone this repo
+2. Install dependencies:
+```
+flutter pub get
+```
+4. Run
+```
+flutter run
+```
 ## Screenshots
 
 - Login<br>
