@@ -14,6 +14,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/detail_nutrition/bindings/detail_nutrition_binding.dart';
 import '../modules/home/detail_nutrition/views/detail_nutrition_view.dart';
 import '../modules/home/detailprofile/bindings/detailprofile_binding.dart';
+import '../modules/home/detailprofile/edit_profile/bindings/edit_profile_binding.dart';
+import '../modules/home/detailprofile/edit_profile/views/edit_profile_view.dart';
 import '../modules/home/detailprofile/views/detailprofile_view.dart';
 import '../modules/home/quests/bindings/quests_binding.dart';
 import '../modules/home/quests/views/quests_view.dart';
@@ -71,6 +73,13 @@ class AppPages {
           name: _Paths.DETAILPROFILE,
           page: () => const DetailprofileView(),
           binding: DetailprofileBinding(),
+          children: [
+            GetPage(
+              name: _Paths.EDIT_PROFILE,
+              page: () => const EditProfileView(),
+              binding: EditProfileBinding(),
+            ),
+          ],
         ),
       ],
     ),
