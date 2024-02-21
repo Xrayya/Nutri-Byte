@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nutri_byte/app/core/utils/color_utils.dart';
 import 'package:nutri_byte/app/core/values/strings.dart';
+import 'package:nutri_byte/app/routes/app_pages.dart';
 import 'package:nutri_byte/app/widgets/nutribyte_back_button.dart';
 import 'package:nutri_byte/app/widgets/nutribyte_button.dart';
 
@@ -50,7 +51,7 @@ class DetailprofileView extends GetView<DetailprofileController> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const NutriByteBackButton(),
-                                nutriByteButton(text: 'Edit', onPressed: () {}),
+                                nutriByteButton(text: 'Edit', onPressed: () => Get.toNamed(Routes.EDIT_PROFILE)),
                               ],
                             ),
                             const SizedBox(

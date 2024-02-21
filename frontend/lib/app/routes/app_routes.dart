@@ -20,6 +20,8 @@ abstract class Routes {
   static const DETAILPROFILE = _Paths.HOME + _Paths.DETAILPROFILE;
   static const EMAIL_VERIFICATION = _Paths.AUTH + _Paths.EMAIL_VERIFICATION;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const EDIT_PROFILE =
+      _Paths.HOME + _Paths.DETAILPROFILE + _Paths.EDIT_PROFILE;
 }
 
 abstract class _Paths {
@@ -39,4 +41,5 @@ abstract class _Paths {
   static const DETAILPROFILE = '/detailprofile';
   static const EMAIL_VERIFICATION = '/email-verification';
   static const ONBOARDING = '/onboarding';
+  static const EDIT_PROFILE = '/edit-profile';
 }
